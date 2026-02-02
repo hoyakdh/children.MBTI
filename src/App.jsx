@@ -3,10 +3,11 @@ import './App.css';
 import StartScreen from './components/StartScreen';
 import QuestionScreen from './components/QuestionScreen';
 import ResultScreen from './components/ResultScreen';
+import CollectionScreen from './components/CollectionScreen';
 import { questions } from './data/questions';
 
 function App() {
-  const [step, setStep] = useState('start'); // start, question, result
+  const [step, setStep] = useState('start'); // start, question, result, collection
   const [userName, setUserName] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [scores, setScores] = useState({
@@ -58,6 +59,18 @@ function App() {
     setUserName('');
   };
 
+  const handleCollection = () => {
+    setStep('collection');
+  };
+
+  const handleBackToResult = () => {
+    if (scores.E === 0 && scores.I === 0 && scores.S === 0 && scores.N === 0) { // 점수 초기화 상태면 시작 화면
+      setStep('start');
+    } else {
+      setStep('result');
+    }
+  };
+
   return (
     <div className="app-container">
       {step === 'start' && <StartScreen onStart={handleStart} />}
@@ -74,9 +87,13 @@ function App() {
           mbti={calculateMBTI()}
           userName={userName}
           onReset={handleReset}
+          onCollection={handleCollection}
         />
       )}
 
+      {step === 'collection' && (
+        <CollectionScreen onBack={handleBackToResult} />
+      )}
 
       <footer style={{
         textAlign: 'center',

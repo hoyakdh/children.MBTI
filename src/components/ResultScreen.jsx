@@ -1,10 +1,9 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { results } from '../data/results';
 
-const ResultScreen = ({ mbti, userName, onReset }) => {
-    const [showModal, setShowModal] = useState(false);
+const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
     const resultData = results[mbti];
     const topRef = useRef(null);
     const captureRef = useRef(null);
@@ -17,14 +16,12 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                 scale: 2,
                 backgroundColor: '#ffffff',
                 useCORS: true,
-                windowWidth: 1024, // 가상 윈도우 너비를 설정하여 모바일 뷰 렌더링 방지
+                windowWidth: 1024,
                 onclone: (clonedDoc) => {
-                    // 캡처 대상 요소 찾기 (id를 추가할 예정)
                     const element = clonedDoc.querySelector('.capture-target');
                     if (element) {
-                        // 스타일 강제 조정
-                        element.style.background = '#ffffff'; // 인쇄용 흰색 배경
-                        element.style.width = '600px'; // A4 폭에 적당한 px 너비 고정
+                        element.style.background = '#ffffff';
+                        element.style.width = '600px';
                         element.style.maxWidth = 'none';
                         element.style.margin = '0';
                         element.style.padding = '30px';
@@ -32,7 +29,6 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                         element.style.animation = 'none';
                         element.style.transform = 'none';
 
-                        // 하위 요소 애니메이션 제거
                         const animated = element.querySelectorAll('*');
                         animated.forEach(el => {
                             el.style.animation = 'none';
@@ -47,20 +43,15 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
 
-            // 이미지가 A4 폭에 맞게 스케일
             const imgProps = pdf.getImageProperties(imgData);
             const imgWidth = pdfWidth;
             const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
 
-            // 내용이 A4 높이를 넘어가면? 
-            // 1. 비율 유지해서 한 장에 맞추기 (fit)
             if (imgHeight > pdfHeight) {
-                // 세로 길이에 맞춰서 비율 축소
                 const fitWidth = (pdfWidth * pdfHeight) / imgHeight;
                 const centerX = (pdfWidth - fitWidth) / 2;
                 pdf.addImage(imgData, 'PNG', centerX, 0, fitWidth, pdfHeight);
             } else {
-                // 한 장 안에 들어오면 위쪽에 붙여서 출력
                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
             }
 
@@ -85,14 +76,14 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
             flexDirection: 'column',
             alignItems: 'center',
             paddingBottom: '2rem',
-            backgroundColor: '#FFE5E5', // Soft Pink Background
+            backgroundColor: '#FFE5E5',
             minHeight: '100vh',
             padding: '2rem 1rem'
         }}>
 
             {/* Main Card Container */}
             <div ref={captureRef} className="capture-target" style={{
-                background: '#FFF0F0', // Slightly lighter pink for card
+                background: '#FFF0F0',
                 borderRadius: '20px',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
                 width: '100%',
@@ -110,9 +101,9 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                     </div>
                     <h1 style={{
                         fontSize: '2.5rem',
-                        color: '#8B4513', // Brownish text
+                        color: '#8B4513',
                         margin: 0,
-                        fontFamily: '"Gaegu", sans-serif', // Assuming a handwritten font if available, fallback sans-serif
+                        fontFamily: '"Gaegu", sans-serif',
                         fontWeight: 'bold'
                     }}>
                         {resultData.character.split(' ')[0]} {resultData.character.split(' ')[1]}
@@ -124,7 +115,6 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
 
                 {/* 2. Character Image */}
                 <div style={{ fontSize: '7rem', marginBottom: '2rem', animation: 'float 3s ease-in-out infinite' }}>
-
                     {
                         resultData.animal === '곰' ? '🐻' :
                             resultData.animal === '펭귄' ? '🐧' :
@@ -144,9 +134,6 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                                                                                     '🦅'
                     }
                 </div>
-
-                {/* Common Section Title Style */}
-
 
                 {/* 3. Description (나는 이런 친구야!) */}
                 <div style={{ width: '100%' }}>
@@ -188,7 +175,6 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                                         borderRadius: '5px'
                                     }}></div>
                                 </div>
-                                {/* Score hidden visually to match image, or kept for clarity? Image has no numbers, just bars. Let's hide numbers to match image style closely, or keep small. Image has numbers! 4, 2, 1, 5, 5 in tiny text. keeping it. */}
                                 <span style={{ marginLeft: '8px', color: '#888', fontSize: '0.8rem', width: '10px' }}>{resultData.features[key]}</span>
                             </div>
                         ))}
@@ -228,7 +214,6 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                                 <strong>{friend}</strong>
                                 <br />
                                 <span style={{ fontSize: '0.85rem', color: '#888' }}>
-                                    {/* Mock description since data is missing, or generic friendly text */}
                                     함께라면 더 즐거울 거야!
                                 </span>
                             </div>
@@ -325,7 +310,7 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
 
             <div style={{ marginTop: '1rem' }}>
                 <button
-                    onClick={() => setShowModal(true)}
+                    onClick={onCollection}
                     style={{
                         padding: '0.8rem 1.5rem',
                         borderRadius: '20px',
@@ -350,92 +335,6 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                     다른 친구들 구경하기 🐾
                 </button>
             </div>
-
-            {/* Collection Modal */}
-            {showModal && (
-                <div style={{
-                    position: 'fixed',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    zIndex: 1000,
-                    padding: '1rem'
-                }} onClick={() => setShowModal(false)}>
-                    <div style={{
-                        background: '#FFF0F0',
-                        width: '100%',
-                        maxWidth: '500px',
-                        maxHeight: '80vh',
-                        borderRadius: '20px',
-                        padding: '1.5rem',
-                        overflowY: 'auto',
-                        position: 'relative',
-                        boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
-                    }} onClick={(e) => e.stopPropagation()}>
-                        <button
-                            onClick={() => setShowModal(false)}
-                            style={{
-                                position: 'absolute',
-                                top: '10px',
-                                right: '15px',
-                                background: 'none',
-                                border: 'none',
-                                fontSize: '1.5rem',
-                                cursor: 'pointer',
-                                color: '#8B4513'
-                            }}
-                        >
-                            ✕
-                        </button>
-
-                        <h2 style={{ textAlign: 'center', color: '#8B4513', marginBottom: '1.5rem', fontFamily: '"Gaegu", sans-serif' }}>
-                            동물 친구 도감 📖
-                        </h2>
-
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
-                            {Object.entries(results).map(([type, data]) => {
-                                // Extract emoji safely
-                                const emoji = data.animal === '곰' ? '🐻' :
-                                    data.animal === '펭귄' ? '🐧' :
-                                        data.animal === '부엉이' ? '🦉' :
-                                            data.animal === '여우' ? '🦊' :
-                                                data.animal === '비버' ? '🦫' :
-                                                    data.animal === '고양이' ? '🐱' :
-                                                        data.animal === '돌고래' ? '🐬' :
-                                                            data.animal === '침팬지' ? '🐒' :
-                                                                data.animal === '호랑이' ? '🐯' :
-                                                                    data.animal === '강아지' ? '🐶' :
-                                                                        data.animal === '다람쥐' ? '🐿️' :
-                                                                            data.animal === '앵무새' ? '🦜' :
-                                                                                data.animal === '사자' ? '🦁' :
-                                                                                    data.animal === '코끼리' ? '🐘' :
-                                                                                        data.animal === '골든 리트리버' ? '🐕' :
-                                                                                            '🦅';
-
-                                return (
-                                    <div key={type} style={{
-                                        background: '#FFF',
-                                        padding: '1rem',
-                                        borderRadius: '15px',
-                                        textAlign: 'center',
-                                        border: '1px solid #FFC0CB',
-                                        boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
-                                    }}>
-                                        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{emoji}</div>
-                                        <div style={{ fontSize: '0.9rem', color: '#A0522D', fontWeight: 'bold' }}>{data.character.split(' ')[0]} {data.character.split(' ')[1]}</div>
-                                        <div style={{ fontSize: '0.8rem', color: '#888' }}>{type}</div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    </div>
-                </div>
-            )}
 
             <style>{`
         @keyframes float {
