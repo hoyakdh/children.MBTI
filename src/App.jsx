@@ -76,6 +76,19 @@ function App() {
           onReset={handleReset}
         />
       )}
+
+
+      <footer style={{
+        textAlign: 'center',
+        padding: '2rem 0',
+        color: '#8B4513',
+        fontSize: '1rem',
+        fontFamily: '"Gaegu", sans-serif',
+        background: '#FFE5E5', // 배경색 추가
+        width: '100%'
+      }}>
+        제작자: hoyakdh@icloud.com
+      </footer>
     </div>
   );
 }
