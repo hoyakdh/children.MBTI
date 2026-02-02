@@ -1,9 +1,10 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { results } from '../data/results';
 
 const ResultScreen = ({ mbti, userName, onReset }) => {
+    const [showModal, setShowModal] = useState(false);
     const resultData = results[mbti];
     const topRef = useRef(null);
     const captureRef = useRef(null);
@@ -321,6 +322,120 @@ const ResultScreen = ({ mbti, userName, onReset }) => {
                     PDF 저장 📥
                 </button>
             </div>
+
+            <div style={{ marginTop: '1rem' }}>
+                <button
+                    onClick={() => setShowModal(true)}
+                    style={{
+                        padding: '0.8rem 1.5rem',
+                        borderRadius: '20px',
+                        background: '#FFF',
+                        color: '#8B4513',
+                        fontSize: '1rem',
+                        fontWeight: 'bold',
+                        border: '2px solid #8B4513',
+                        cursor: 'pointer',
+                        transition: '0.2s',
+                        boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
+                    }}
+                    onMouseOver={(e) => {
+                        e.currentTarget.style.background = '#8B4513';
+                        e.currentTarget.style.color = '#FFF';
+                    }}
+                    onMouseOut={(e) => {
+                        e.currentTarget.style.background = '#FFF';
+                        e.currentTarget.style.color = '#8B4513';
+                    }}
+                >
+                    다른 친구들 구경하기 🐾
+                </button>
+            </div>
+
+            {/* Collection Modal */}
+            {showModal && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    background: 'rgba(0,0,0,0.6)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    zIndex: 1000,
+                    padding: '1rem'
+                }} onClick={() => setShowModal(false)}>
+                    <div style={{
+                        background: '#FFF0F0',
+                        width: '100%',
+                        maxWidth: '500px',
+                        maxHeight: '80vh',
+                        borderRadius: '20px',
+                        padding: '1.5rem',
+                        overflowY: 'auto',
+                        position: 'relative',
+                        boxShadow: '0 10px 25px rgba(0,0,0,0.2)'
+                    }} onClick={(e) => e.stopPropagation()}>
+                        <button
+                            onClick={() => setShowModal(false)}
+                            style={{
+                                position: 'absolute',
+                                top: '10px',
+                                right: '15px',
+                                background: 'none',
+                                border: 'none',
+                                fontSize: '1.5rem',
+                                cursor: 'pointer',
+                                color: '#8B4513'
+                            }}
+                        >
+                            ✕
+                        </button>
+
+                        <h2 style={{ textAlign: 'center', color: '#8B4513', marginBottom: '1.5rem', fontFamily: '"Gaegu", sans-serif' }}>
+                            동물 친구 도감 📖
+                        </h2>
+
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '10px' }}>
+                            {Object.entries(results).map(([type, data]) => {
+                                // Extract emoji safely
+                                const emoji = data.animal === '곰' ? '🐻' :
+                                    data.animal === '펭귄' ? '🐧' :
+                                        data.animal === '부엉이' ? '🦉' :
+                                            data.animal === '여우' ? '🦊' :
+                                                data.animal === '비버' ? '🦫' :
+                                                    data.animal === '고양이' ? '🐱' :
+                                                        data.animal === '돌고래' ? '🐬' :
+                                                            data.animal === '침팬지' ? '🐒' :
+                                                                data.animal === '호랑이' ? '🐯' :
+                                                                    data.animal === '강아지' ? '🐶' :
+                                                                        data.animal === '다람쥐' ? '🐿️' :
+                                                                            data.animal === '앵무새' ? '🦜' :
+                                                                                data.animal === '사자' ? '🦁' :
+                                                                                    data.animal === '코끼리' ? '🐘' :
+                                                                                        data.animal === '골든 리트리버' ? '🐕' :
+                                                                                            '🦅';
+
+                                return (
+                                    <div key={type} style={{
+                                        background: '#FFF',
+                                        padding: '1rem',
+                                        borderRadius: '15px',
+                                        textAlign: 'center',
+                                        border: '1px solid #FFC0CB',
+                                        boxShadow: '0 2px 5px rgba(0,0,0,0.05)'
+                                    }}>
+                                        <div style={{ fontSize: '2.5rem', marginBottom: '0.5rem' }}>{emoji}</div>
+                                        <div style={{ fontSize: '0.9rem', color: '#A0522D', fontWeight: 'bold' }}>{data.character.split(' ')[0]} {data.character.split(' ')[1]}</div>
+                                        <div style={{ fontSize: '0.8rem', color: '#888' }}>{type}</div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <style>{`
         @keyframes float {
