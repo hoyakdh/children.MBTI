@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const StartScreen = ({ onStart }) => {
+const StartScreen = ({ onStart, isDarkMode }) => {
     const [name, setName] = useState('');
 
     const handleSubmit = (e) => {
@@ -10,6 +10,18 @@ const StartScreen = ({ onStart }) => {
         }
     };
 
+    const theme = {
+        background: isDarkMode ? '#1a1a2e' : '#FFE5E5',
+        cardBackground: isDarkMode ? '#16213e' : '#FFF0F0',
+        titleColor: isDarkMode ? '#e94560' : '#8B4513',
+        subTextColor: isDarkMode ? '#e0e0e0' : '#A0522D',
+        inputBackground: isDarkMode ? '#0f3460' : '#FFF',
+        inputBorder: isDarkMode ? '#e94560' : '#FFC0CB',
+        inputText: isDarkMode ? '#fff' : '#555',
+        buttonActive: isDarkMode ? '#e94560' : '#FF6B6B',
+        buttonInactive: isDarkMode ? '#333' : '#E0E0E0'
+    };
+
     return (
         <div className="fade-in" style={{
             display: 'flex',
@@ -17,11 +29,12 @@ const StartScreen = ({ onStart }) => {
             alignItems: 'center',
             justifyContent: 'center',
             minHeight: '100vh',
-            backgroundColor: '#FFE5E5', // Soft Pink Background to match ResultScreen
-            padding: '2rem'
+            backgroundColor: theme.background,
+            padding: '2rem',
+            transition: 'background-color 0.5s ease'
         }}>
             <div style={{
-                background: '#FFF0F0',
+                background: theme.cardBackground,
                 borderRadius: '20px',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
                 width: '100%',
@@ -30,25 +43,28 @@ const StartScreen = ({ onStart }) => {
                 textAlign: 'center',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
+                transition: 'background-color 0.5s ease'
             }}>
                 <div style={{ fontSize: '5rem', marginBottom: '1rem', animation: 'bounce 2s infinite' }}>🐾</div>
 
                 <h1 style={{
                     fontSize: '2.5rem',
-                    color: '#8B4513',
+                    color: theme.titleColor,
                     marginBottom: '1rem',
                     fontFamily: '"Gaegu", sans-serif',
                     fontWeight: 'bold',
-                    lineHeight: '1.2'
+                    lineHeight: '1.2',
+                    transition: 'color 0.5s ease'
                 }}>
                     우리 아이 마음 동물<br />MBTI 도감
                 </h1>
 
                 <p style={{
-                    color: '#A0522D',
+                    color: theme.subTextColor,
                     marginBottom: '2.5rem',
-                    fontSize: '1.1rem'
+                    fontSize: '1.1rem',
+                    transition: 'color 0.5s ease'
                 }}>
                     나의 성격은 어떤 동물과 닮았을까요?
                 </p>
@@ -62,14 +78,15 @@ const StartScreen = ({ onStart }) => {
                         style={{
                             padding: '1rem',
                             borderRadius: '30px',
-                            border: '2px solid #FFC0CB',
+                            border: `2px solid ${theme.inputBorder}`,
                             fontSize: '1.1rem',
                             textAlign: 'center',
                             outline: 'none',
-                            background: '#FFF',
+                            background: theme.inputBackground,
                             width: '100%',
                             fontFamily: 'inherit',
-                            color: '#555'
+                            color: theme.inputText,
+                            transition: 'all 0.5s ease'
                         }}
                     />
                     <button
@@ -78,14 +95,15 @@ const StartScreen = ({ onStart }) => {
                         style={{
                             padding: '1rem',
                             borderRadius: '30px',
-                            background: name.trim() ? '#FF6B6B' : '#E0E0E0',
+                            background: name.trim() ? theme.buttonActive : theme.buttonInactive,
                             color: '#fff',
                             fontSize: '1.2rem',
                             fontWeight: 'bold',
                             transition: '0.3s',
                             width: '100%',
                             boxShadow: name.trim() ? '0 4px 6px rgba(0,0,0,0.1)' : 'none',
-                            cursor: name.trim() ? 'pointer' : 'default'
+                            cursor: name.trim() ? 'pointer' : 'default',
+                            border: 'none'
                         }}
                     >
                         시작하기

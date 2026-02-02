@@ -1,24 +1,41 @@
 import React, { useState } from 'react';
 import { results } from '../data/results';
 
-const CollectionScreen = ({ onBack }) => {
+const CollectionScreen = ({ onBack, isDarkMode }) => {
     const [selectedAnimal, setSelectedAnimal] = useState(null);
+
+    const theme = {
+        background: isDarkMode ? '#1a1a2e' : '#FFE5E5',
+        titleColor: isDarkMode ? '#e94560' : '#8B4513',
+        cardBg: isDarkMode ? '#16213e' : '#FFF',
+        cardBorder: isDarkMode ? '#e94560' : '#FFC0CB',
+        cardText: isDarkMode ? '#fff' : '#8B4513',
+        cardSubText: isDarkMode ? '#aaa' : '#A0522D',
+        modalBg: isDarkMode ? '#16213e' : '#FFF0F0',
+        modalText: isDarkMode ? '#fff' : '#8B4513',
+        modalCloseBtn: isDarkMode ? '#e94560' : '#8B4513',
+        modalContentBg: isDarkMode ? '#0f3460' : '#FFF',
+        modalContentText: isDarkMode ? '#e0e0e0' : '#555',
+        buttonBg: isDarkMode ? '#e94560' : '#FF6B6B'
+    };
 
     return (
         <div className="fade-in" style={{
             minHeight: '100vh',
-            backgroundColor: '#FFE5E5',
+            backgroundColor: theme.background,
             padding: '2rem 1rem',
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center'
+            alignItems: 'center',
+            transition: 'background-color 0.5s ease'
         }}>
             <h1 style={{
                 fontSize: '2rem',
-                color: '#8B4513',
+                color: theme.titleColor,
                 fontFamily: '"Gaegu", sans-serif',
                 marginBottom: '2rem',
-                textAlign: 'center'
+                textAlign: 'center',
+                transition: 'color 0.5s ease'
             }}>
                 동물 친구 도감 📖
             </h1>
@@ -54,10 +71,10 @@ const CollectionScreen = ({ onBack }) => {
                         <div key={type}
                             onClick={() => setSelectedAnimal({ type, ...data, emoji })}
                             style={{
-                                background: '#FFF',
+                                background: theme.cardBg,
                                 borderRadius: '15px',
                                 padding: '1rem',
-                                border: '2px solid #FFC0CB',
+                                border: `2px solid ${theme.cardBorder}`,
                                 textAlign: 'center',
                                 cursor: 'pointer',
                                 transition: '0.2s',
@@ -65,10 +82,10 @@ const CollectionScreen = ({ onBack }) => {
                             }}
                         >
                             <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>{emoji}</div>
-                            <div style={{ fontSize: '1rem', fontWeight: 'bold', color: '#8B4513' }}>
+                            <div style={{ fontSize: '1rem', fontWeight: 'bold', color: theme.cardText, transition: 'color 0.5s ease' }}>
                                 {data.character.split(' ')[0]} {data.character.split(' ')[1]}
                             </div>
-                            <div style={{ fontSize: '0.8rem', color: '#A0522D', marginTop: '4px' }}>{type}</div>
+                            <div style={{ fontSize: '0.8rem', color: theme.cardSubText, marginTop: '4px', transition: 'color 0.5s ease' }}>{type}</div>
                         </div>
                     );
                 })}
@@ -85,13 +102,14 @@ const CollectionScreen = ({ onBack }) => {
                     style={{
                         padding: '1rem 3rem',
                         borderRadius: '50px',
-                        background: '#FF6B6B',
+                        background: theme.buttonBg,
                         color: '#fff',
                         fontSize: '1.2rem',
                         fontWeight: 'bold',
                         border: 'none',
                         boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        transition: 'background-color 0.5s ease'
                     }}
                 >
                     돌아가기
@@ -114,14 +132,15 @@ const CollectionScreen = ({ onBack }) => {
                     padding: '1rem'
                 }} onClick={() => setSelectedAnimal(null)}>
                     <div style={{
-                        background: '#FFF0F0',
+                        background: theme.modalBg,
                         width: '100%',
                         maxWidth: '400px',
                         borderRadius: '20px',
                         padding: '2rem',
                         position: 'relative',
                         boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-                        textAlign: 'center'
+                        textAlign: 'center',
+                        transition: 'background-color 0.5s ease'
                     }} onClick={e => e.stopPropagation()}>
                         <button
                             onClick={() => setSelectedAnimal(null)}
@@ -132,8 +151,9 @@ const CollectionScreen = ({ onBack }) => {
                                 background: 'none',
                                 border: 'none',
                                 fontSize: '1.5rem',
-                                color: '#8B4513',
-                                cursor: 'pointer'
+                                color: theme.modalCloseBtn,
+                                cursor: 'pointer',
+                                transition: 'color 0.5s ease'
                             }}
                         >
                             ✕
@@ -144,25 +164,27 @@ const CollectionScreen = ({ onBack }) => {
                         </div>
                         <h2 style={{
                             fontSize: '1.8rem',
-                            color: '#8B4513',
+                            color: theme.modalText,
                             marginBottom: '0.5rem',
-                            fontFamily: '"Gaegu", sans-serif'
+                            fontFamily: '"Gaegu", sans-serif',
+                            transition: 'color 0.5s ease'
                         }}>
                             {selectedAnimal.character}
                         </h2>
-                        <div style={{ color: '#A0522D', marginBottom: '1.5rem', fontWeight: 'bold' }}>
+                        <div style={{ color: theme.cardSubText, marginBottom: '1.5rem', fontWeight: 'bold', transition: 'color 0.5s ease' }}>
                             ({selectedAnimal.type})
                         </div>
 
                         <div style={{
                             textAlign: 'left',
-                            background: '#FFF',
+                            background: theme.modalContentBg,
                             padding: '1rem',
                             borderRadius: '10px',
-                            border: '1px solid #FFC0CB',
+                            border: `1px solid ${theme.cardBorder}`,
                             fontSize: '0.95rem',
-                            color: '#555',
-                            lineHeight: '1.6'
+                            color: theme.modalContentText,
+                            lineHeight: '1.6',
+                            transition: 'background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease'
                         }}>
                             <ul style={{ paddingLeft: '20px', margin: 0 }}>
                                 {Array.isArray(selectedAnimal.description) ?

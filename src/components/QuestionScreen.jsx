@@ -1,9 +1,24 @@
 import React from 'react';
 import { questions } from '../data/questions';
 
-const QuestionScreen = ({ questionIndex, onAnswer }) => {
+const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode }) => {
     const currentQuestion = questions[questionIndex];
     const progress = ((questionIndex + 1) / questions.length) * 100;
+
+    const theme = {
+        background: isDarkMode ? '#1a1a2e' : '#FFE5E5',
+        cardBackground: isDarkMode ? '#16213e' : '#FFF0F0',
+        progressBarBg: isDarkMode ? '#0f3460' : '#FFF',
+        progressBarFill: isDarkMode ? '#e94560' : '#FF6B6B',
+        progressBarBorder: isDarkMode ? '#e94560' : '#FFC0CB',
+        qNumberColor: isDarkMode ? '#e94560' : '#FF6B6B',
+        questionText: isDarkMode ? '#e0e0e0' : '#4A4A4A',
+        buttonBg: isDarkMode ? '#0f3460' : '#FFF',
+        buttonBorder: isDarkMode ? '#e94560' : '#FFC0CB',
+        buttonText: isDarkMode ? '#fff' : '#555',
+        buttonHoverBg: isDarkMode ? '#1a1a2e' : '#FFF5E1',
+        buttonHoverBorder: isDarkMode ? '#ff6b6b' : '#FF6B6B'
+    };
 
     return (
         <div className="fade-in" style={{
@@ -12,11 +27,12 @@ const QuestionScreen = ({ questionIndex, onAnswer }) => {
             alignItems: 'center',
             justifyContent: 'center',
             minHeight: '100vh',
-            backgroundColor: '#FFE5E5', // Soft Pink
-            padding: '2rem'
+            backgroundColor: theme.background,
+            padding: '2rem',
+            transition: 'background-color 0.5s ease'
         }}>
             <div style={{
-                background: '#FFF0F0',
+                background: theme.cardBackground,
                 borderRadius: '20px',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
                 width: '100%',
@@ -24,35 +40,38 @@ const QuestionScreen = ({ questionIndex, onAnswer }) => {
                 padding: '2.5rem 2rem',
                 display: 'flex',
                 flexDirection: 'column',
-                position: 'relative'
+                position: 'relative',
+                transition: 'background-color 0.5s ease'
             }}>
                 {/* Progress Bar Container */}
                 <div style={{
                     width: '100%',
                     height: '10px',
-                    background: '#FFF',
+                    background: theme.progressBarBg,
                     borderRadius: '5px',
                     marginBottom: '2rem',
                     overflow: 'hidden',
-                    border: '1px solid #FFC0CB'
+                    border: `1px solid ${theme.progressBarBorder}`,
+                    transition: 'all 0.5s ease'
                 }}>
                     <div style={{
                         width: `${progress}%`,
                         height: '100%',
-                        background: '#FF6B6B',
-                        transition: 'width 0.5s ease',
+                        background: theme.progressBarFill,
+                        transition: 'width 0.5s ease, background-color 0.5s ease',
                         borderRadius: '5px'
                     }}></div>
                 </div>
 
                 {/* Question Number */}
                 <div style={{
-                    color: '#FF6B6B',
+                    color: theme.qNumberColor,
                     fontWeight: 'bold',
                     marginBottom: '1rem',
                     textAlign: 'center',
                     fontSize: '1.2rem',
-                    fontFamily: '"Gaegu", sans-serif'
+                    fontFamily: '"Gaegu", sans-serif',
+                    transition: 'color 0.5s ease'
                 }}>
                     Q{questionIndex + 1}.
                 </div>
@@ -64,7 +83,8 @@ const QuestionScreen = ({ questionIndex, onAnswer }) => {
                     lineHeight: '1.5',
                     wordBreak: 'keep-all',
                     fontSize: '1.4rem',
-                    color: '#4A4A4A'
+                    color: theme.questionText,
+                    transition: 'color 0.5s ease'
                 }}>
                     {currentQuestion.question}
                 </h2>
@@ -78,24 +98,24 @@ const QuestionScreen = ({ questionIndex, onAnswer }) => {
                             style={{
                                 padding: '1.2rem',
                                 borderRadius: '15px',
-                                background: '#FFF',
-                                border: '2px solid #FFC0CB',
+                                background: theme.buttonBg,
+                                border: `2px solid ${theme.buttonBorder}`,
                                 boxShadow: '0 2px 4px rgba(0,0,0,0.05)',
                                 fontSize: '1.05rem',
                                 textAlign: 'left',
                                 transition: '0.2s',
                                 cursor: 'pointer',
-                                color: '#555',
+                                color: theme.buttonText,
                                 width: '100%'
                             }}
                             onMouseOver={(e) => {
-                                e.currentTarget.style.border = '2px solid #FF6B6B';
-                                e.currentTarget.style.background = '#FFF5E1';
+                                e.currentTarget.style.border = `2px solid ${theme.buttonHoverBorder}`;
+                                e.currentTarget.style.background = theme.buttonHoverBg;
                                 e.currentTarget.style.transform = 'translateY(-2px)';
                             }}
                             onMouseOut={(e) => {
-                                e.currentTarget.style.border = '2px solid #FFC0CB';
-                                e.currentTarget.style.background = '#FFF';
+                                e.currentTarget.style.border = `2px solid ${theme.buttonBorder}`;
+                                e.currentTarget.style.background = theme.buttonBg;
                                 e.currentTarget.style.transform = 'translateY(0)';
                             }}
                         >

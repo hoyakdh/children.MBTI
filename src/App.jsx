@@ -17,6 +17,13 @@ function App() {
     J: 0, P: 0
   });
 
+  // Dark Mode State
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(prev => !prev);
+  };
+
   const handleStart = (name) => {
     setUserName(name);
     setStep('question');
@@ -71,14 +78,58 @@ function App() {
     }
   };
 
+  // Theme Constants
+  const theme = {
+    light: {
+      background: '#FFE5E5',
+      footerBackground: '#FFE5E5',
+      text: '#8B4513'
+    },
+    dark: {
+      background: '#1a1a2e',
+      footerBackground: '#1a1a2e',
+      text: '#e94560'
+    }
+  };
+
+  const currentTheme = isDarkMode ? theme.dark : theme.light;
+
   return (
-    <div className="app-container">
-      {step === 'start' && <StartScreen onStart={handleStart} />}
+    <div className="app-container" style={{ position: 'relative' }}>
+
+      {/* Dark Mode Toggle Button */}
+      <button
+        onClick={toggleDarkMode}
+        style={{
+          position: 'fixed',
+          top: '20px',
+          right: '20px',
+          zIndex: 1000,
+          background: isDarkMode ? '#e94560' : '#FFF',
+          color: isDarkMode ? '#FFF' : '#222',
+          border: isDarkMode ? 'none' : '1px solid #ddd',
+          borderRadius: '50%',
+          width: '50px',
+          height: '50px',
+          fontSize: '1.5rem',
+          cursor: 'pointer',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+          transition: 'all 0.3s ease',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center'
+        }}
+      >
+        {isDarkMode ? '🌙' : '☀️'}
+      </button>
+
+      {step === 'start' && <StartScreen onStart={handleStart} isDarkMode={isDarkMode} />}
 
       {step === 'question' && (
         <QuestionScreen
           questionIndex={questionIndex}
           onAnswer={handleAnswer}
+          isDarkMode={isDarkMode}
         />
       )}
 
@@ -88,21 +139,23 @@ function App() {
           userName={userName}
           onReset={handleReset}
           onCollection={handleCollection}
+          isDarkMode={isDarkMode}
         />
       )}
 
       {step === 'collection' && (
-        <CollectionScreen onBack={handleBackToResult} />
+        <CollectionScreen onBack={handleBackToResult} isDarkMode={isDarkMode} />
       )}
 
       <footer style={{
         textAlign: 'center',
         padding: '2rem 0',
-        color: '#8B4513',
+        color: currentTheme.text,
         fontSize: '1rem',
         fontFamily: '"Gaegu", sans-serif',
-        background: '#FFE5E5', // 배경색 추가
-        width: '100%'
+        background: currentTheme.footerBackground,
+        width: '100%',
+        transition: 'all 0.5s ease'
       }}>
         제작자: hoyakdh@icloud.com
       </footer>

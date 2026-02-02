@@ -3,10 +3,34 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { results } from '../data/results';
 
-const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
+const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => {
     const resultData = results[mbti];
     const topRef = useRef(null);
     const captureRef = useRef(null);
+
+    const theme = {
+        background: isDarkMode ? '#1a1a2e' : '#FFE5E5',
+        cardBackground: isDarkMode ? '#16213e' : '#FFF0F0',
+        titleColor: isDarkMode ? '#e94560' : '#8B4513',
+        subTextColor: isDarkMode ? '#e0e0e0' : '#888',
+        mbtiColor: isDarkMode ? '#ff6b6b' : '#A0522D',
+        sectionTitleColor: isDarkMode ? '#e94560' : '#8B0000',
+        textColor: isDarkMode ? '#e0e0e0' : '#555',
+        listItemDot: isDarkMode ? '#ff6b6b' : '#CD5C5C',
+        chartLabel: isDarkMode ? '#e94560' : '#8B4513',
+        chartBg: isDarkMode ? '#0f3460' : '#FFF',
+        chartFill: isDarkMode ? '#e94560' : '#FFB6C1',
+        friendCardBg: isDarkMode ? '#0f3460' : '#FFF',
+        friendCardBorder: isDarkMode ? '#e94560' : '#FFC0CB',
+        tipBg: isDarkMode ? '#0f3460' : '#FFF5E1',
+        bookBg: isDarkMode ? '#0f3460' : '#F0F8FF',
+        bookText: isDarkMode ? '#e0e0e0' : '#333',
+        collectionBtnBg: isDarkMode ? '#0f3460' : '#FFF',
+        collectionBtnText: isDarkMode ? '#e0e0e0' : '#8B4513',
+        collectionBtnBorder: isDarkMode ? '#e94560' : '#8B4513',
+        collectionBtnHoverBg: isDarkMode ? '#e94560' : '#8B4513',
+        collectionBtnHoverText: isDarkMode ? '#FFF' : '#FFF'
+    };
 
     const handleDownloadPDF = async () => {
         if (!captureRef.current) return;
@@ -14,13 +38,14 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
         try {
             const canvas = await html2canvas(captureRef.current, {
                 scale: 2,
-                backgroundColor: '#ffffff',
+                backgroundColor: '#ffffff', // Capture as white background always
                 useCORS: true,
                 windowWidth: 1024,
                 onclone: (clonedDoc) => {
                     const element = clonedDoc.querySelector('.capture-target');
                     if (element) {
                         element.style.background = '#ffffff';
+                        element.style.color = '#000000';
                         element.style.width = '600px';
                         element.style.maxWidth = 'none';
                         element.style.margin = '0';
@@ -28,6 +53,17 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
                         element.style.boxShadow = 'none';
                         element.style.animation = 'none';
                         element.style.transform = 'none';
+
+                        // Force light theme colors for PDF
+                        const textElements = element.querySelectorAll('*');
+                        textElements.forEach(el => {
+                            el.style.color = '#333';
+                            el.style.borderColor = '#FFC0CB';
+                            if (el.style.backgroundColor === 'rgb(15, 52, 96)' || el.style.backgroundColor === '#0f3460') { // Check for dark theme bg
+                                el.style.backgroundColor = '#FFF';
+                            }
+                        });
+
 
                         const animated = element.querySelectorAll('*');
                         animated.forEach(el => {
@@ -76,14 +112,15 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
             flexDirection: 'column',
             alignItems: 'center',
             paddingBottom: '2rem',
-            backgroundColor: '#FFE5E5',
+            backgroundColor: theme.background,
             minHeight: '100vh',
-            padding: '2rem 1rem'
+            padding: '2rem 1rem',
+            transition: 'background-color 0.5s ease'
         }}>
 
             {/* Main Card Container */}
             <div ref={captureRef} className="capture-target" style={{
-                background: '#FFF0F0',
+                background: theme.cardBackground,
                 borderRadius: '20px',
                 boxShadow: '0 10px 25px rgba(0,0,0,0.05)',
                 width: '100%',
@@ -91,24 +128,26 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
                 padding: '2rem 1.5rem',
                 display: 'flex',
                 flexDirection: 'column',
-                alignItems: 'center'
+                alignItems: 'center',
+                transition: 'background-color 0.5s ease'
             }}>
 
                 {/* 1. Header */}
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-                    <div style={{ fontSize: '0.9rem', color: '#888', marginBottom: '0.5rem' }}>
+                    <div style={{ fontSize: '0.9rem', color: theme.subTextColor, marginBottom: '0.5rem', transition: 'color 0.5s ease' }}>
                         {userName}의 마음 동물은?
                     </div>
                     <h1 style={{
                         fontSize: '2.5rem',
-                        color: '#8B4513',
+                        color: theme.titleColor,
                         margin: 0,
                         fontFamily: '"Gaegu", sans-serif',
-                        fontWeight: 'bold'
+                        fontWeight: 'bold',
+                        transition: 'color 0.5s ease'
                     }}>
                         {resultData.character.split(' ')[0]} {resultData.character.split(' ')[1]}
                     </h1>
-                    <div style={{ fontSize: '1.2rem', color: '#A0522D', marginTop: '0.2rem' }}>
+                    <div style={{ fontSize: '1.2rem', color: theme.mbtiColor, marginTop: '0.2rem', transition: 'color 0.5s ease' }}>
                         ({mbti})
                     </div>
                 </div>
@@ -137,24 +176,24 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
 
                 {/* 3. Description (나는 이런 친구야!) */}
                 <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: '#8B0000', borderBottom: '2px solid #8B0000', paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '0', textAlign: 'left' }}>
+                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '0', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
                         나는 이런 친구야!
                     </h3>
                     <ul style={{ listStyle: 'none', paddingLeft: '0.5rem' }}>
                         {Array.isArray(resultData.description) ? resultData.description.map((desc, i) => (
-                            <li key={i} style={{ marginBottom: '0.5rem', fontSize: '1rem', color: '#555', display: 'flex' }}>
-                                <span style={{ color: '#CD5C5C', marginRight: '8px' }}>•</span>
+                            <li key={i} style={{ marginBottom: '0.5rem', fontSize: '1rem', color: theme.textColor, display: 'flex', transition: 'color 0.5s ease' }}>
+                                <span style={{ color: theme.listItemDot, marginRight: '8px', transition: 'color 0.5s ease' }}>•</span>
                                 {desc}
                             </li>
                         )) : (
-                            <li style={{ fontSize: '1rem', color: '#555' }}>{resultData.description}</li>
+                            <li style={{ fontSize: '1rem', color: theme.textColor, transition: 'color 0.5s ease' }}>{resultData.description}</li>
                         )}
                     </ul>
                 </div>
 
                 {/* 4. Chart (나의 마음 능력치!) */}
                 <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: '#8B0000', borderBottom: '2px solid #8B0000', paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left' }}>
+                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
                         나의 마음 능력치! 📊
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -166,13 +205,14 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
                             leadership: "리더십"
                         }).map(([key, label]) => (
                             <div key={key} style={{ display: 'flex', alignItems: 'center', fontSize: '0.9rem' }}>
-                                <span style={{ width: '60px', fontWeight: 'bold', color: '#8B4513' }}>{label}</span>
-                                <div style={{ flex: 1, height: '10px', background: '#FFF', borderRadius: '5px', overflow: 'hidden', border: '1px solid #E0E0E0' }}>
+                                <span style={{ width: '60px', fontWeight: 'bold', color: theme.chartLabel, transition: 'color 0.5s ease' }}>{label}</span>
+                                <div style={{ flex: 1, height: '10px', background: theme.chartBg, borderRadius: '5px', overflow: 'hidden', border: '1px solid #E0E0E0', transition: 'background-color 0.5s ease' }}>
                                     <div style={{
                                         width: `${resultData.features[key] * 20}%`,
                                         height: '100%',
-                                        background: '#FFB6C1', // Light pink bar
-                                        borderRadius: '5px'
+                                        background: theme.chartFill,
+                                        borderRadius: '5px',
+                                        transition: 'background-color 0.5s ease'
                                     }}></div>
                                 </div>
                                 <span style={{ marginLeft: '8px', color: '#888', fontSize: '0.8rem', width: '10px' }}>{resultData.features[key]}</span>
@@ -183,13 +223,13 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
 
                 {/* 5. Strengths (이럴 때 힘이 쑥쑥 나!) */}
                 <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: '#8B0000', borderBottom: '2px solid #8B0000', paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left' }}>
+                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
                         이럴 때 힘이 쑥쑥 나!
                     </h3>
                     <ul style={{ listStyle: 'none', paddingLeft: '0.5rem' }}>
                         {resultData.strengths.map((str, i) => (
-                            <li key={i} style={{ marginBottom: '0.5rem', fontSize: '1rem', color: '#555', display: 'flex' }}>
-                                <span style={{ color: '#CD5C5C', marginRight: '8px' }}>•</span>
+                            <li key={i} style={{ marginBottom: '0.5rem', fontSize: '1rem', color: theme.textColor, display: 'flex', transition: 'color 0.5s ease' }}>
+                                <span style={{ color: theme.listItemDot, marginRight: '8px', transition: 'color 0.5s ease' }}>•</span>
                                 {str}
                             </li>
                         ))}
@@ -198,22 +238,24 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
 
                 {/* 6. Best Friends (나랑 잘 맞는 동물 친구는?) */}
                 <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: '#8B0000', borderBottom: '2px solid #8B0000', paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left' }}>
+                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
                         나랑 잘 맞는 동물 친구는?
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                         {resultData.bestMatch.map((friend, i) => (
                             <div key={i} style={{
-                                background: '#FFF',
+                                background: theme.friendCardBg,
                                 padding: '0.8rem',
                                 borderRadius: '10px',
-                                border: '1px solid #FFC0CB',
+                                border: `1px solid ${theme.friendCardBorder}`,
                                 fontSize: '0.95rem',
-                                color: '#555'
+                                color: theme.textColor,
+                                transition: 'all 0.5s ease',
+                                boxShadow: isDarkMode ? '0 2px 5px rgba(0,0,0,0.2)' : 'none'
                             }}>
-                                <strong>{friend}</strong>
+                                <strong style={{ color: theme.textColor }}>{friend}</strong>
                                 <br />
-                                <span style={{ fontSize: '0.85rem', color: '#888' }}>
+                                <span style={{ fontSize: '0.85rem', color: isDarkMode ? '#aaa' : '#888' }}>
                                     함께라면 더 즐거울 거야!
                                 </span>
                             </div>
@@ -223,40 +265,42 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
 
                 {/* 7. Tip (더 멋진 내가 되려면?) */}
                 <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: '#8B0000', borderBottom: '2px solid #8B0000', paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left' }}>
+                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
                         더 멋진 내가 되려면?
                     </h3>
                     <div style={{
-                        background: '#FFF5E1', // Light yellow for tip
+                        background: theme.tipBg,
                         padding: '1rem',
                         borderRadius: '10px',
                         fontSize: '1rem',
                         lineHeight: '1.5',
-                        color: '#555',
+                        color: theme.textColor,
                         display: 'flex',
-                        alignItems: 'flex-start'
+                        alignItems: 'flex-start',
+                        transition: 'all 0.5s ease'
                     }}>
                         <span style={{ fontSize: '1.2rem', marginRight: '8px' }}>💡</span>
                         <div>
                             엄마, 아빠가 해주는 이 말을 기억해봐!<br />
-                            <span style={{ fontWeight: 'bold', color: '#D2691E' }}>"{resultData.tip}"</span>
+                            <span style={{ fontWeight: 'bold', color: theme.mbtiColor }}>"{resultData.tip}"</span>
                         </div>
                     </div>
                 </div>
 
                 {/* 8. Books (너를 위한 추천 도서!) */}
                 <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: '#8B0000', borderBottom: '2px solid #8B0000', paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left' }}>
+                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
                         너를 위한 추천 도서! 📚
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                         {resultData.books.map((book, i) => (
                             <div key={i} style={{
-                                background: '#F0F8FF',
+                                background: theme.bookBg,
                                 padding: '0.8rem',
                                 borderRadius: '10px',
-                                color: '#333',
-                                fontSize: '0.95rem'
+                                color: theme.bookText,
+                                fontSize: '0.95rem',
+                                transition: 'all 0.5s ease'
                             }}>
                                 📖 <strong>{book}</strong>
                             </div>
@@ -314,22 +358,22 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection }) => {
                     style={{
                         padding: '0.8rem 1.5rem',
                         borderRadius: '20px',
-                        background: '#FFF',
-                        color: '#8B4513',
+                        background: theme.collectionBtnBg,
+                        color: theme.collectionBtnText,
                         fontSize: '1rem',
                         fontWeight: 'bold',
-                        border: '2px solid #8B4513',
+                        border: `2px solid ${theme.collectionBtnBorder}`,
                         cursor: 'pointer',
                         transition: '0.2s',
                         boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
                     }}
                     onMouseOver={(e) => {
-                        e.currentTarget.style.background = '#8B4513';
-                        e.currentTarget.style.color = '#FFF';
+                        e.currentTarget.style.background = theme.collectionBtnHoverBg;
+                        e.currentTarget.style.color = theme.collectionBtnHoverText;
                     }}
                     onMouseOut={(e) => {
-                        e.currentTarget.style.background = '#FFF';
-                        e.currentTarget.style.color = '#8B4513';
+                        e.currentTarget.style.background = theme.collectionBtnBg;
+                        e.currentTarget.style.color = theme.collectionBtnText;
                     }}
                 >
                     다른 친구들 구경하기 🐾
