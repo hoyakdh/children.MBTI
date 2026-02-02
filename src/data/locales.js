@@ -1,6 +1,6 @@
 export const locales = {
     ko: {
-        startTitle: "우리 아이 마음 동물<br />MBTI 도감",
+        startTitle: "어린이 마음 동물<br />MBTI(성향) 도감",
         startSubtitle: "나의 성격은 어떤 동물과 닮았을까요?",
         namePlaceholder: "이름을 입력해주세요",
         startBtn: "시작하기",

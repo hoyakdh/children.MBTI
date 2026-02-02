@@ -290,26 +290,28 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode, langu
                     </div>
                 </div>
 
-                {/* 8. Books (너를 위한 추천 도서!) */}
-                <div style={{ width: '100%' }}>
-                    <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        {t.bookTitle}
-                    </h3>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        {resultData.books[language].map((book, i) => (
-                            <div key={i} style={{
-                                background: theme.bookBg,
-                                padding: '0.8rem',
-                                borderRadius: '10px',
-                                color: theme.bookText,
-                                fontSize: '0.95rem',
-                                transition: 'all 0.5s ease'
-                            }}>
-                                📖 <strong>{book}</strong>
-                            </div>
-                        ))}
+                {/* 8. Books (너를 위한 추천 도서!) - Only show for Korean */}
+                {language === 'ko' && (
+                    <div style={{ width: '100%' }}>
+                        <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
+                            {t.bookTitle}
+                        </h3>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                            {resultData.books[language].map((book, i) => (
+                                <div key={i} style={{
+                                    background: theme.bookBg,
+                                    padding: '0.8rem',
+                                    borderRadius: '10px',
+                                    color: theme.bookText,
+                                    fontSize: '0.95rem',
+                                    transition: 'all 0.5s ease'
+                                }}>
+                                    📖 <strong>{book}</strong>
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                </div>
+                )}
 
             </div>
 
