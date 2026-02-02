@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { locales } from '../data/locales';
 
-const StartScreen = ({ onStart, isDarkMode }) => {
+const StartScreen = ({ onStart, isDarkMode, language }) => {
     const [name, setName] = useState('');
+    const t = locales[language]; // Current locale texts
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -56,8 +58,7 @@ const StartScreen = ({ onStart, isDarkMode }) => {
                     fontWeight: 'bold',
                     lineHeight: '1.2',
                     transition: 'color 0.5s ease'
-                }}>
-                    우리 아이 마음 동물<br />MBTI 도감
+                }} dangerouslySetInnerHTML={{ __html: t.startTitle }}>
                 </h1>
 
                 <p style={{
@@ -66,13 +67,13 @@ const StartScreen = ({ onStart, isDarkMode }) => {
                     fontSize: '1.1rem',
                     transition: 'color 0.5s ease'
                 }}>
-                    나의 성격은 어떤 동물과 닮았을까요?
+                    {t.startSubtitle}
                 </p>
 
                 <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <input
                         type="text"
-                        placeholder="이름을 입력해주세요"
+                        placeholder={t.namePlaceholder}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         style={{
@@ -106,7 +107,7 @@ const StartScreen = ({ onStart, isDarkMode }) => {
                             border: 'none'
                         }}
                     >
-                        시작하기
+                        {t.startBtn}
                     </button>
                 </form>
             </div>

@@ -1,9 +1,11 @@
 import React from 'react';
 import { questions } from '../data/questions';
+import { locales } from '../data/locales';
 
-const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode }) => {
+const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode, language }) => {
     const currentQuestion = questions[questionIndex];
     const progress = ((questionIndex + 1) / questions.length) * 100;
+    const t = locales[language];
 
     const theme = {
         background: isDarkMode ? '#1a1a2e' : '#FFE5E5',
@@ -73,7 +75,7 @@ const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode }) => {
                     fontFamily: '"Gaegu", sans-serif',
                     transition: 'color 0.5s ease'
                 }}>
-                    Q{questionIndex + 1}.
+                    {t.questionProgress.replace('{current}', questionIndex + 1)}
                 </div>
 
                 {/* Question Text */}
@@ -86,7 +88,7 @@ const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode }) => {
                     color: theme.questionText,
                     transition: 'color 0.5s ease'
                 }}>
-                    {currentQuestion.question}
+                    {currentQuestion.question[language]}
                 </h2>
 
                 {/* Answer Buttons */}
@@ -119,7 +121,7 @@ const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode }) => {
                                 e.currentTarget.style.transform = 'translateY(0)';
                             }}
                         >
-                            {answer.text}
+                            {answer.text[language]}
                         </button>
                     ))}
                 </div>

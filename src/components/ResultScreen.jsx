@@ -2,9 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { results } from '../data/results';
+import { locales } from '../data/locales';
 
-const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => {
+const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode, language }) => {
     const resultData = results[mbti];
+    const t = locales[language];
     const topRef = useRef(null);
     const captureRef = useRef(null);
 
@@ -60,7 +62,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                             el.style.color = '#333';
                             el.style.borderColor = '#FFC0CB';
                             if (el.style.backgroundColor === 'rgb(15, 52, 96)' || el.style.backgroundColor === '#0f3460') { // Check for dark theme bg
-                                el.style.backgroundColor = '#FFF';
+                                element.style.backgroundColor = '#FFF';
                             }
                         });
 
@@ -91,10 +93,10 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 pdf.addImage(imgData, 'PNG', 0, 0, imgWidth, imgHeight);
             }
 
-            pdf.save(`${userName}_마음동물결과.pdf`);
+            pdf.save(`${userName}_Result.pdf`);
         } catch (err) {
-            console.error("PDF 저장 중 오류 발생:", err);
-            alert("PDF 저장에 실패했어요. 😢");
+            console.error("PDF Fail:", err);
+            alert("PDF Save Failed 😢");
         }
     };
 
@@ -104,7 +106,9 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
         }
     }, []);
 
-    if (!resultData) return <div>결과를 찾을 수 없습니다.</div>;
+    if (!resultData) return <div>Data Not Found</div>;
+
+    const currentCharacter = resultData.character[language];
 
     return (
         <div className="fade-in" ref={topRef} style={{
@@ -135,7 +139,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 1. Header */}
                 <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <div style={{ fontSize: '0.9rem', color: theme.subTextColor, marginBottom: '0.5rem', transition: 'color 0.5s ease' }}>
-                        {userName}의 마음 동물은?
+                        {t.resultTitle.replace('{name}', userName)}
                     </div>
                     <h1 style={{
                         fontSize: '2.5rem',
@@ -145,10 +149,10 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                         fontWeight: 'bold',
                         transition: 'color 0.5s ease'
                     }}>
-                        {resultData.character.split(' ')[0]} {resultData.character.split(' ')[1]}
+                        {currentCharacter}
                     </h1>
                     <div style={{ fontSize: '1.2rem', color: theme.mbtiColor, marginTop: '0.2rem', transition: 'color 0.5s ease' }}>
-                        ({mbti})
+                        {t.resultSubtitle.replace('{mbti}', mbti)}
                     </div>
                 </div>
 
@@ -177,16 +181,16 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 3. Description (나는 이런 친구야!) */}
                 <div style={{ width: '100%' }}>
                     <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '0', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        나는 이런 친구야!
+                        {t.myTypeTitle}
                     </h3>
                     <ul style={{ listStyle: 'none', paddingLeft: '0.5rem' }}>
-                        {Array.isArray(resultData.description) ? resultData.description.map((desc, i) => (
+                        {Array.isArray(resultData.description[language]) ? resultData.description[language].map((desc, i) => (
                             <li key={i} style={{ marginBottom: '0.5rem', fontSize: '1rem', color: theme.textColor, display: 'flex', transition: 'color 0.5s ease' }}>
                                 <span style={{ color: theme.listItemDot, marginRight: '8px', transition: 'color 0.5s ease' }}>•</span>
                                 {desc}
                             </li>
                         )) : (
-                            <li style={{ fontSize: '1rem', color: theme.textColor, transition: 'color 0.5s ease' }}>{resultData.description}</li>
+                            <li style={{ fontSize: '1rem', color: theme.textColor, transition: 'color 0.5s ease' }}>{resultData.description[language]}</li>
                         )}
                     </ul>
                 </div>
@@ -194,18 +198,18 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 4. Chart (나의 마음 능력치!) */}
                 <div style={{ width: '100%' }}>
                     <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        나의 마음 능력치! 📊
+                        {t.chartTitle}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         {Object.entries({
-                            energy: "활달함",
-                            warmth: "따뜻함",
-                            creativity: "창의력",
-                            thoroughness: "꼼꼼함",
-                            leadership: "리더십"
+                            energy: t.energy,
+                            warmth: t.warmth,
+                            creativity: t.creativity,
+                            thoroughness: t.thoroughness,
+                            leadership: t.leadership
                         }).map(([key, label]) => (
                             <div key={key} style={{ display: 'flex', alignItems: 'center', fontSize: '0.9rem' }}>
-                                <span style={{ width: '60px', fontWeight: 'bold', color: theme.chartLabel, transition: 'color 0.5s ease' }}>{label}</span>
+                                <span style={{ width: '80px', fontWeight: 'bold', color: theme.chartLabel, transition: 'color 0.5s ease' }}>{label}</span>
                                 <div style={{ flex: 1, height: '10px', background: theme.chartBg, borderRadius: '5px', overflow: 'hidden', border: '1px solid #E0E0E0', transition: 'background-color 0.5s ease' }}>
                                     <div style={{
                                         width: `${resultData.features[key] * 20}%`,
@@ -224,10 +228,10 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 5. Strengths (이럴 때 힘이 쑥쑥 나!) */}
                 <div style={{ width: '100%' }}>
                     <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        이럴 때 힘이 쑥쑥 나!
+                        {t.strengthTitle}
                     </h3>
                     <ul style={{ listStyle: 'none', paddingLeft: '0.5rem' }}>
-                        {resultData.strengths.map((str, i) => (
+                        {resultData.strengths[language].map((str, i) => (
                             <li key={i} style={{ marginBottom: '0.5rem', fontSize: '1rem', color: theme.textColor, display: 'flex', transition: 'color 0.5s ease' }}>
                                 <span style={{ color: theme.listItemDot, marginRight: '8px', transition: 'color 0.5s ease' }}>•</span>
                                 {str}
@@ -239,10 +243,10 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 6. Best Friends (나랑 잘 맞는 동물 친구는?) */}
                 <div style={{ width: '100%' }}>
                     <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        나랑 잘 맞는 동물 친구는?
+                        {t.friendTitle}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                        {resultData.bestMatch.map((friend, i) => (
+                        {resultData.bestMatch[language].map((friend, i) => (
                             <div key={i} style={{
                                 background: theme.friendCardBg,
                                 padding: '0.8rem',
@@ -256,7 +260,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                                 <strong style={{ color: theme.textColor }}>{friend}</strong>
                                 <br />
                                 <span style={{ fontSize: '0.85rem', color: isDarkMode ? '#aaa' : '#888' }}>
-                                    함께라면 더 즐거울 거야!
+                                    {t.friendDesc}
                                 </span>
                             </div>
                         ))}
@@ -266,7 +270,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 7. Tip (더 멋진 내가 되려면?) */}
                 <div style={{ width: '100%' }}>
                     <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        더 멋진 내가 되려면?
+                        {t.tipTitle}
                     </h3>
                     <div style={{
                         background: theme.tipBg,
@@ -281,8 +285,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                     }}>
                         <span style={{ fontSize: '1.2rem', marginRight: '8px' }}>💡</span>
                         <div>
-                            엄마, 아빠가 해주는 이 말을 기억해봐!<br />
-                            <span style={{ fontWeight: 'bold', color: theme.mbtiColor }}>"{resultData.tip}"</span>
+                            <span style={{ fontWeight: 'bold', color: theme.mbtiColor }}>"{resultData.tip[language]}"</span>
                         </div>
                     </div>
                 </div>
@@ -290,10 +293,10 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                 {/* 8. Books (너를 위한 추천 도서!) */}
                 <div style={{ width: '100%' }}>
                     <h3 style={{ fontSize: '1.2rem', color: theme.sectionTitleColor, borderBottom: `2px solid ${theme.sectionTitleColor}`, paddingBottom: '5px', width: '100%', marginBottom: '1rem', marginTop: '1.5rem', textAlign: 'left', transition: 'color 0.5s ease, border-color 0.5s ease' }}>
-                        너를 위한 추천 도서! 📚
+                        {t.bookTitle}
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                        {resultData.books.map((book, i) => (
+                        {resultData.books[language].map((book, i) => (
                             <div key={i} style={{
                                 background: theme.bookBg,
                                 padding: '0.8rem',
@@ -328,7 +331,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                     onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                     onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 >
-                    다시 하기
+                    {t.retryBtn}
                 </button>
 
                 <button
@@ -348,7 +351,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                     onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
                     onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 >
-                    PDF 저장 📥
+                    {t.savePdfBtn}
                 </button>
             </div>
 
@@ -376,7 +379,7 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode }) => 
                         e.currentTarget.style.color = theme.collectionBtnText;
                     }}
                 >
-                    다른 친구들 구경하기 🐾
+                    {t.collectionBtn}
                 </button>
             </div>
 

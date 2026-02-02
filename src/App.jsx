@@ -19,6 +19,8 @@ function App() {
 
   // Dark Mode State
   const [isDarkMode, setIsDarkMode] = useState(false);
+  // Language State
+  const [language, setLanguage] = useState('ko'); // ko, en, es
 
   const toggleDarkMode = () => {
     setIsDarkMode(prev => !prev);
@@ -95,41 +97,79 @@ function App() {
   const currentTheme = isDarkMode ? theme.dark : theme.light;
 
   return (
-    <div className="app-container" style={{ position: 'relative' }}>
+    <div className="app-container" style={{ position: 'relative', backgroundColor: currentTheme.background, minHeight: '100vh', transition: 'background-color 0.5s ease' }}>
 
-      {/* Dark Mode Toggle Button */}
-      <button
-        onClick={toggleDarkMode}
-        style={{
-          position: 'fixed',
-          top: '20px',
-          right: '20px',
-          zIndex: 1000,
-          background: isDarkMode ? '#e94560' : '#FFF',
-          color: isDarkMode ? '#FFF' : '#222',
-          border: isDarkMode ? 'none' : '1px solid #ddd',
-          borderRadius: '50%',
-          width: '50px',
-          height: '50px',
-          fontSize: '1.5rem',
-          cursor: 'pointer',
-          boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
-          transition: 'all 0.3s ease',
+      {/* Top Bar: Dark Mode & Language Toggles */}
+      <div style={{
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        zIndex: 1000,
+        display: 'flex',
+        gap: '10px',
+        alignItems: 'center'
+      }}>
+        {/* Language Toggle */}
+        <div style={{
           display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-      >
-        {isDarkMode ? '🌙' : '☀️'}
-      </button>
+          background: isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(255,255,255,0.5)',
+          borderRadius: '20px',
+          padding: '5px',
+          backdropFilter: 'blur(5px)'
+        }}>
+          {['ko', 'en', 'es'].map(lang => (
+            <button
+              key={lang}
+              onClick={() => setLanguage(lang)}
+              style={{
+                border: 'none',
+                background: language === lang ? (isDarkMode ? '#e94560' : '#FF6B6B') : 'transparent',
+                color: language === lang ? '#fff' : (isDarkMode ? '#e0e0e0' : '#8B4513'),
+                padding: '5px 10px',
+                borderRadius: '15px',
+                cursor: 'pointer',
+                fontWeight: 'bold',
+                fontSize: '0.8rem',
+                transition: 'all 0.3s'
+              }}
+            >
+              {lang.toUpperCase()}
+            </button>
+          ))}
+        </div>
 
-      {step === 'start' && <StartScreen onStart={handleStart} isDarkMode={isDarkMode} />}
+        {/* Dark Mode Toggle */}
+        <button
+          onClick={toggleDarkMode}
+          style={{
+            background: isDarkMode ? '#e94560' : '#FFF',
+            color: isDarkMode ? '#FFF' : '#222',
+            border: isDarkMode ? 'none' : '1px solid #ddd',
+            borderRadius: '50%',
+            width: '40px',
+            height: '40px',
+            fontSize: '1.2rem',
+            cursor: 'pointer',
+            boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          title="Toggle Dark Mode"
+        >
+          {isDarkMode ? '🌙' : '☀️'}
+        </button>
+      </div>
+
+      {step === 'start' && <StartScreen onStart={handleStart} isDarkMode={isDarkMode} language={language} />}
 
       {step === 'question' && (
         <QuestionScreen
           questionIndex={questionIndex}
           onAnswer={handleAnswer}
           isDarkMode={isDarkMode}
+          language={language}
         />
       )}
 
@@ -140,11 +180,12 @@ function App() {
           onReset={handleReset}
           onCollection={handleCollection}
           isDarkMode={isDarkMode}
+          language={language}
         />
       )}
 
       {step === 'collection' && (
-        <CollectionScreen onBack={handleBackToResult} isDarkMode={isDarkMode} />
+        <CollectionScreen onBack={handleBackToResult} isDarkMode={isDarkMode} language={language} />
       )}
 
       <footer style={{
@@ -155,7 +196,8 @@ function App() {
         fontFamily: '"Gaegu", sans-serif',
         background: currentTheme.footerBackground,
         width: '100%',
-        transition: 'all 0.5s ease'
+        transition: 'all 0.5s ease',
+        marginTop: 'auto'
       }}>
         제작자: hoyakdh@icloud.com
       </footer>

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { results } from '../data/results';
+import { locales } from '../data/locales';
 
-const CollectionScreen = ({ onBack, isDarkMode }) => {
+const CollectionScreen = ({ onBack, isDarkMode, language }) => {
     const [selectedAnimal, setSelectedAnimal] = useState(null);
+    const t = locales[language];
 
     const theme = {
         background: isDarkMode ? '#1a1a2e' : '#FFE5E5',
@@ -37,7 +39,7 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
                 textAlign: 'center',
                 transition: 'color 0.5s ease'
             }}>
-                동물 친구 도감 📖
+                {t.collectionTitle}
             </h1>
 
             <div style={{
@@ -49,6 +51,7 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
                 paddingBottom: '160px' // 버튼이나 풋터와 겹치지 않도록 여백 충분히 확보
             }}>
                 {Object.entries(results).map(([type, data]) => {
+                    const currentCharacter = data.character[language];
                     // 이모지 추출 로직 (ResultScreen과 동일)
                     const emoji = data.animal === '곰' ? '🐻' :
                         data.animal === '펭귄' ? '🐧' :
@@ -69,7 +72,7 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
 
                     return (
                         <div key={type}
-                            onClick={() => setSelectedAnimal({ type, ...data, emoji })}
+                            onClick={() => setSelectedAnimal({ type, ...data, emoji, characterName: currentCharacter, descriptionList: data.description[language] })}
                             style={{
                                 background: theme.cardBg,
                                 borderRadius: '15px',
@@ -83,7 +86,7 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
                         >
                             <div style={{ fontSize: '3rem', marginBottom: '0.5rem' }}>{emoji}</div>
                             <div style={{ fontSize: '1rem', fontWeight: 'bold', color: theme.cardText, transition: 'color 0.5s ease' }}>
-                                {data.character.split(' ')[0]} {data.character.split(' ')[1]}
+                                {currentCharacter}
                             </div>
                             <div style={{ fontSize: '0.8rem', color: theme.cardSubText, marginTop: '4px', transition: 'color 0.5s ease' }}>{type}</div>
                         </div>
@@ -112,7 +115,7 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
                         transition: 'background-color 0.5s ease'
                     }}
                 >
-                    돌아가기
+                    {t.backBtn}
                 </button>
             </div>
 
@@ -169,7 +172,7 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
                             fontFamily: '"Gaegu", sans-serif',
                             transition: 'color 0.5s ease'
                         }}>
-                            {selectedAnimal.character}
+                            {selectedAnimal.characterName}
                         </h2>
                         <div style={{ color: theme.cardSubText, marginBottom: '1.5rem', fontWeight: 'bold', transition: 'color 0.5s ease' }}>
                             ({selectedAnimal.type})
@@ -187,10 +190,10 @@ const CollectionScreen = ({ onBack, isDarkMode }) => {
                             transition: 'background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease'
                         }}>
                             <ul style={{ paddingLeft: '20px', margin: 0 }}>
-                                {Array.isArray(selectedAnimal.description) ?
-                                    selectedAnimal.description.slice(0, 3).map((desc, i) => (
+                                {Array.isArray(selectedAnimal.descriptionList) ?
+                                    selectedAnimal.descriptionList.slice(0, 3).map((desc, i) => (
                                         <li key={i}>{desc}</li>
-                                    )) : <li>{selectedAnimal.description}</li>
+                                    )) : <li>{selectedAnimal.descriptionList}</li>
                                 }
                             </ul>
                         </div>
