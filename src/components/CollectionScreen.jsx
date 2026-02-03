@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// import { Helmet } from 'react-helmet-async';
 import { results } from '../data/results';
 import { locales } from '../data/locales';
 
@@ -31,6 +32,10 @@ const CollectionScreen = ({ onBack, isDarkMode, language }) => {
             alignItems: 'center',
             transition: 'background-color 0.5s ease'
         }}>
+            {/* <Helmet>
+                <title>동물 친구 도감 - 어린이 마음 동물 MBTI</title>
+                <meta name="description" content="모든 MBTI 동물 친구들을 만나보세요!" />
+            </Helmet> */}
             <h1 style={{
                 fontSize: '2rem',
                 color: theme.titleColor,

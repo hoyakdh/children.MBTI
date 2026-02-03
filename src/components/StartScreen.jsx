@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
+// import { Helmet } from 'react-helmet-async';
 import { locales } from '../data/locales';
 
 const StartScreen = ({ onStart, isDarkMode, language }) => {
     const [name, setName] = useState('');
     const t = locales[language]; // Current locale texts
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleStartClick = () => {
+        console.log("Start button clicked manually:", name);
         if (name.trim()) {
             onStart(name);
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            handleStartClick();
         }
     };
 
@@ -35,6 +42,8 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
             padding: '2rem',
             transition: 'background-color 0.5s ease'
         }}>
+            {/* Removed Helmet for debugging */}
+
             <div style={{
                 background: theme.cardBackground,
                 borderRadius: '20px',
@@ -70,12 +79,13 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
                     {t.startSubtitle}
                 </p>
 
-                <form onSubmit={handleSubmit} style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                     <input
                         type="text"
                         placeholder={t.namePlaceholder}
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        onKeyDown={handleKeyPress}
                         style={{
                             padding: '1rem',
                             borderRadius: '30px',
@@ -91,7 +101,8 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
                         }}
                     />
                     <button
-                        type="submit"
+                        type="button"
+                        onClick={handleStartClick}
                         disabled={!name.trim()}
                         style={{
                             padding: '1rem',
@@ -109,7 +120,7 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
                     >
                         {t.startBtn}
                     </button>
-                </form>
+                </div>
             </div>
 
             <style>{`

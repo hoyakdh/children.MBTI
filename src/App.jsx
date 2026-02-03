@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './App.css';
 import StartScreen from './components/StartScreen';
 import QuestionScreen from './components/QuestionScreen';
 import ResultScreen from './components/ResultScreen';
 import CollectionScreen from './components/CollectionScreen';
+import AboutPage from './components/AboutPage';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import { questions } from './data/questions';
 
 function App() {
-  const [step, setStep] = useState('start'); // start, question, result, collection
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // 1. State Definitions (Declared first to avoid hoisting issues)
   const [userName, setUserName] = useState('');
   const [questionIndex, setQuestionIndex] = useState(0);
   const [scores, setScores] = useState({
@@ -17,23 +23,39 @@ function App() {
     J: 0, P: 0
   });
 
-  // Dark Mode State
   const [isDarkMode, setIsDarkMode] = useState(false);
-  // Language State
-  const [language, setLanguage] = useState('ko'); // ko, en, es
+  const [language, setLanguage] = useState('ko');
 
+  // 2. Side Effects
+  useEffect(() => {
+    // Reset state when returning to home
+    if (location.pathname === '/') {
+      setQuestionIndex(0);
+      setScores({
+        E: 0, I: 0,
+        S: 0, N: 0,
+        T: 0, F: 0,
+        J: 0, P: 0
+      });
+      setUserName('');
+    }
+  }, [location.pathname]);
+
+  // 3. Helper Functions & Handlers
   const toggleDarkMode = () => {
     setIsDarkMode(prev => !prev);
   };
 
   const handleStart = (name) => {
+    console.log("Start button clicked. Name:", name);
     setUserName(name);
-    setStep('question');
+    navigate('/test');
   };
 
   const handleAnswer = (type, value) => {
     // type: "EI", "SN", "TF", "JP"
     // value: "E", "I", "S", "N", "T", "F", "J", "P"
+    console.log("Answer selected:", type, value);
 
     setScores(prev => ({
       ...prev,
@@ -43,7 +65,8 @@ function App() {
     if (questionIndex < questions.length - 1) {
       setQuestionIndex(prev => prev + 1);
     } else {
-      setStep('result');
+      console.log("Quiz finished. Navigating to result.");
+      navigate('/result');
     }
   };
 
@@ -57,27 +80,11 @@ function App() {
   };
 
   const handleReset = () => {
-    setStep('start');
-    setQuestionIndex(0);
-    setScores({
-      E: 0, I: 0,
-      S: 0, N: 0,
-      T: 0, F: 0,
-      J: 0, P: 0
-    });
-    setUserName('');
+    navigate('/');
   };
 
   const handleCollection = () => {
-    setStep('collection');
-  };
-
-  const handleBackToResult = () => {
-    if (scores.E === 0 && scores.I === 0 && scores.S === 0 && scores.N === 0) { // 점수 초기화 상태면 시작 화면
-      setStep('start');
-    } else {
-      setStep('result');
-    }
+    navigate('/collection');
   };
 
   // Theme Constants
@@ -162,44 +169,51 @@ function App() {
         </button>
       </div>
 
-      {step === 'start' && <StartScreen onStart={handleStart} isDarkMode={isDarkMode} language={language} />}
+      <Routes>
+        <Route path="/" element={<StartScreen onStart={handleStart} isDarkMode={isDarkMode} language={language} />} />
+        <Route path="/test" element={
+          <QuestionScreen
+            questionIndex={questionIndex}
+            onAnswer={handleAnswer}
+            isDarkMode={isDarkMode}
+            language={language}
+          />
+        } />
 
-      {step === 'question' && (
-        <QuestionScreen
-          questionIndex={questionIndex}
-          onAnswer={handleAnswer}
-          isDarkMode={isDarkMode}
-          language={language}
-        />
-      )}
-
-      {step === 'result' && (
-        <ResultScreen
-          mbti={calculateMBTI()}
-          userName={userName}
-          onReset={handleReset}
-          onCollection={handleCollection}
-          isDarkMode={isDarkMode}
-          language={language}
-        />
-      )}
-
-      {step === 'collection' && (
-        <CollectionScreen onBack={handleBackToResult} isDarkMode={isDarkMode} language={language} />
-      )}
+        <Route path="/result" element={
+          <ResultScreen
+            mbti={calculateMBTI()}
+            userName={userName}
+            onReset={handleReset}
+            onCollection={handleCollection}
+            isDarkMode={isDarkMode}
+            language={language}
+          />
+        } />
+        <Route path="/collection" element={<CollectionScreen onBack={() => navigate(-1)} isDarkMode={isDarkMode} language={language} />} />
+        <Route path="/about" element={<AboutPage isDarkMode={isDarkMode} language={language} />} />
+        <Route path="/privacy" element={<PrivacyPolicy isDarkMode={isDarkMode} />} />
+      </Routes>
 
       <footer style={{
         textAlign: 'center',
         padding: '2rem 0',
         color: currentTheme.text,
-        fontSize: '1rem',
+        fontSize: '0.9rem',
         fontFamily: '"Gaegu", sans-serif',
         background: currentTheme.footerBackground,
         width: '100%',
         transition: 'all 0.5s ease',
-        marginTop: 'auto'
+        marginTop: 'auto',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px'
       }}>
-        제작자: hoyakdh@icloud.com
+        <div>제작자: hoyakdh@icloud.com</div>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '20px' }}>
+          <button onClick={() => navigate('/about')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontFamily: 'inherit' }}>소개</button>
+          <button onClick={() => navigate('/privacy')} style={{ background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', fontFamily: 'inherit' }}>개인정보처리방침</button>
+        </div>
       </footer>
     </div>
   );
