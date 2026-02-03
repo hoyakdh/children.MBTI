@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Helmet } from 'react-helmet-async';
 import { results } from '../data/results';
 import { locales } from '../data/locales';
 

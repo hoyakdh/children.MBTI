@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Helmet } from 'react-helmet-async';
 
 const AboutPage = ({ isDarkMode, language }) => {
     const textColor = isDarkMode ? '#e0e0e0' : '#333';

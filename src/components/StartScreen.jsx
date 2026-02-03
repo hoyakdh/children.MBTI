@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { Helmet } from 'react-helmet-async';
 import { locales } from '../data/locales';
 
 const StartScreen = ({ onStart, isDarkMode, language }) => {
