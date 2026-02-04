@@ -23,7 +23,46 @@ export const locales = {
         warmth: "따뜻함",
         creativity: "창의력",
         thoroughness: "꼼꼼함",
-        leadership: "리더십"
+        leadership: "리더십",
+        startDescriptionTitle: "우리 아이 마음 동물 도감이란?",
+        startDescription: "아이들의 성격은 저마다 다른 빛깔을 가지고 있습니다. MBTI 이론을 바탕으로 우리 아이의 성향을 귀여운 동물 친구들에 빗대어 알아보세요. 이 테스트는 아이들이 평소에 보여주는 행동과 반응을 통해 자연스러운 성향을 발견하도록 도와줍니다. 아이와 함께 대화하며 서로를 더 깊이 이해하는 시간을 가져보세요!",
+        about: {
+            title: "소개 (About Us)",
+            introTitle: "우리 아이 마음 동물 도감이란?",
+            introDesc: "모든 아이는 저마다의 특별한 빛깔을 가지고 있습니다. '우리 아이 마음 동물 도감'은 MBTI 성격 유형 이론을 바탕으로, 우리 아이들이 가진 고유한 성향을 친근한 동물 친구들에 빗대어 알아보는 서비스입니다.",
+            reasonTitle: "만든 이유",
+            reasonDesc: "아이를 키우며 \"우리 아이는 어떤 성향일까?\", \"어떻게 대화하면 좋을까?\" 고민하는 부모님들을 위해 만들었습니다. 딱딱한 검사가 아니라, 아이와 함께 동물을 찾는 과정에서 서로를 더 깊이 이해하는 계기가 되기를 바랍니다.",
+            featureTitle: "특징",
+            feature1: "친근한 동물 캐릭터: 16가지 성격 유형을 귀여운 동물로 표현했습니다.",
+            feature2: "쉬운 질문: 아이들의 일상 생활에서 볼 수 있는 상황들로 질문을 구성했습니다.",
+            feature3: "다국어 지원: 한국어, 영어, 스페인어를 지원하여 다양한 문화권의 아이들도 함께 즐길 수 있습니다.",
+            contactTitle: "문의하기",
+            contactDesc: "서비스 이용 중 불편한 점이나 제안하고 싶은 점이 있다면 언제든지 아래 이메일로 연락주세요."
+        },
+        privacy: {
+            title: "개인정보처리방침 (Privacy Policy)",
+            intro: "본 개인정보처리방침은 '어린이 마음 동물 MBTI(성향) 도감' (이하 '사이트')이 이용자의 개인정보를 어떻게 수집, 사용, 보호하는지 설명합니다.",
+            collectionTitle: "1. 수집하는 개인정보",
+            collectionDesc: "본 사이트는 별도의 회원가입 절차 없이 이용 가능하며, 서비스 이용을 위해 사용자가 입력하는 닉네임, 테스트 결과 데이터는 브라우저 세션 또는 로컬 환경에서만 처리되며 서버에 영구 저장되지 않습니다.",
+            cookieTitle: "2. 쿠키(Cookie)의 운용 및 거부",
+            cookieDesc: "본 사이트는 이용자에게 개별적인 맞춤 서비스를 제공하기 위해 이용정보를 저장하고 수시로 불러오는 '쿠키(cookie)'를 사용합니다.",
+            cookieList1: "쿠키는 웹사이트를 운영하는데 이용되는 서버가 이용자의 컴퓨터 브라우저에게 보내는 소량의 정보이며 이용자들의 PC 컴퓨터 내의 하드디스크에 저장되기도 합니다.",
+            cookieList2: "Google AdSense 광고: 본 사이트는 광고 게재를 위해 Google AdSense를 사용합니다. Google 및 파트너는 쿠키를 사용하여 사용자의 본 사이트 또는 다른 웹사이트 방문 기록을 기반으로 광고를 게재할 수 있습니다. 사용자는 언제든지 Google 광고 설정에서 맞춤형 광고를 해제할 수 있습니다.",
+            thirdPartyTitle: "3. 개인정보의 제3자 제공",
+            thirdPartyDesc: "본 사이트는 이용자의 개인정보를 원칙적으로 외부에 제공하지 않습니다. 다만, 법령의 규정에 의거하거나, 수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우는 예외로 합니다.",
+            protectionTitle: "4. 개인정보의 보호",
+            protectionDesc: "본 사이트는 이용자의 개인정보를 보호하기 위해 기술적/관리적 대책을 강구하고 있습니다. 그러나 인터넷 상의 데이터 전송은 100% 안전을 보장할 수 없음을 유의해 주시기 바랍니다.",
+            changeTitle: "5. 개인정보 처리방침의 변경",
+            changeDesc: "본 개인정보처리방침은 법령 또는 서비스 변경 사항을 반영하기 위해 수정될 수 있습니다. 변경 사항은 사이트를 통해 공지됩니다.",
+            inquiryTitle: "6. 문의",
+            inquiryDesc: "개인정보 관련 문의사항은 hoyakdh@icloud.com 으로 연락주시기 바랍니다.",
+            lastModified: "최종 수정일: 2026년 2월 3일"
+        },
+        footer: {
+            creator: "제작자: hoyakdh@icloud.com",
+            aboutBtn: "소개",
+            privacyBtn: "개인정보처리방침"
+        }
     },
     en: {
         startTitle: "My Child's Spirit Animal<br />MBTI Book",
@@ -49,7 +88,46 @@ export const locales = {
         warmth: "Warmth",
         creativity: "Creativity",
         thoroughness: "Detail",
-        leadership: "Leading"
+        leadership: "Leading",
+        startDescriptionTitle: "What is the Spirit Animal MBTI?",
+        startDescription: "Every child has their own unique personality and spark. Based on MBTI theory, discover your child's natural tendencies represented by cute animal friends. This test helps identify natural traits through daily behaviors and reactions. Use this as a fun opportunity to talk with your child and understand each other better!",
+        about: {
+            title: "About Us",
+            introTitle: "What is this service?",
+            introDesc: "Every child has a unique spark. The 'Child Spirit Animal MBTI' is a service based on MBTI personality theory, helping you discover your child's unique traits through friendly animal characters.",
+            reasonTitle: "Why we made this",
+            reasonDesc: "Created for parents wondering 'What is my child's personality?' or 'How should I talk to them?'. We hope this serves not as a rigid test, but as a chance to understand each other deeply while finding an animal friend together.",
+            featureTitle: "Features",
+            feature1: "Friendly Characters: 16 personality types represented by cute animals.",
+            feature2: "Easy Questions: Questions based on daily life situations.",
+            feature3: "Multi-language: Supports Korean, English, and Spanish for children worldwide.",
+            contactTitle: "Contact Us",
+            contactDesc: "If you have any inconveniences or suggestions, please contact us at the email below."
+        },
+        privacy: {
+            title: "Privacy Policy",
+            intro: "This Privacy Policy explains how 'Child Spirit Animal MBTI' (the 'Site') collects, uses, and protects user information.",
+            collectionTitle: "1. Information Collected",
+            collectionDesc: "This site does not require sign-up. Nicknames and test results are processed only in the browser session or local environment and are not permanently saved on the server.",
+            cookieTitle: "2. Cookies",
+            cookieDesc: "We use cookies to provide personalized services.",
+            cookieList1: "Cookies are small pieces of information sent by the server to the user's browser and stored on the user's hard drive.",
+            cookieList2: "Google AdSense: We use Google AdSense. Google and partners may use cookies to serve ads based on visits to this or other sites. You can opt out of personalized advertising in Google Ad Settings.",
+            thirdPartyTitle: "3. Third Party Provision",
+            thirdPartyDesc: "We do not provide personal information to outside parties in principle, except as required by law.",
+            protectionTitle: "4. Protection",
+            protectionDesc: "We take measures to protect minimal user data. However, internet transmission is never 100% secure.",
+            changeTitle: "5. Policy Changes",
+            changeDesc: "This policy may be modified to reflect legal or service changes. Changes will be notified on the site.",
+            inquiryTitle: "6. Inquiry",
+            inquiryDesc: "Please contact hoyakdh@icloud.com for privacy inquiries.",
+            lastModified: "Last Modified: Feb 3, 2026"
+        },
+        footer: {
+            creator: "Creator: hoyakdh@icloud.com",
+            aboutBtn: "About Us",
+            privacyBtn: "Privacy Policy"
+        }
     },
     es: {
         startTitle: "El Animal Espiritual de mi Hijo<br />Libro MBTI",
@@ -75,6 +153,45 @@ export const locales = {
         warmth: "Calidez",
         creativity: "Creatividad",
         thoroughness: "Detalle",
-        leadership: "Liderazgo"
+        leadership: "Liderazgo",
+        startDescriptionTitle: "¿Qué es el Animal Espiritual MBTI?",
+        startDescription: "Cada niño tiene su propia personalidad única. Basado en la teoría MBTI, descubre las tendencias naturales de tu hijo representadas por lindos amigos animales. Esta prueba ayuda a identificar rasgos naturales a través de comportamientos diarios. ¡Úsalo como una oportunidad divertida para hablar con tu hijo y entenderse mejor!",
+        about: {
+            title: "Sobre Nosotros",
+            introTitle: "¿Qué es este servicio?",
+            introDesc: "Cada niño tiene una chispa única. El 'Animal Espiritual MBTI' es un servicio basado en la teoría de personalidad MBTI, que te ayuda a descubrir los rasgos únicos de tu hijo a través de amigables personajes animales.",
+            reasonTitle: "Por qué lo hicimos",
+            reasonDesc: "Creado para padres que se preguntan '¿Cuál es la personalidad de mi hijo?' o '¿Cómo debería hablar con ellos?'. Esperamos que esto sirva no como una prueba rígida, sino como una oportunidad para entenderse profundamente mientras encuentran un amigo animal juntos.",
+            featureTitle: "Características",
+            feature1: "Personajes Amigables: 16 tipos de personalidad representados por lindos animales.",
+            feature2: "Preguntas Fáciles: Preguntas basadas en situaciones de la vida diaria.",
+            feature3: "Multilingüe: Soporta coreano, inglés y español para niños de todo el mundo.",
+            contactTitle: "Contáctanos",
+            contactDesc: "Si tienes algún inconveniente o sugerencia, contáctanos en el correo electrónico a continuación."
+        },
+        privacy: {
+            title: "Política de Privacidad",
+            intro: "Esta Política de Privacidad explica cómo 'Animal Espiritual MBTI' (el 'Sitio') recopila, utiliza y protege la información del usuario.",
+            collectionTitle: "1. Información Recopilada",
+            collectionDesc: "Este sitio no requiere registro. Los apodos y los resultados de las pruebas se procesan solo en la sesión del navegador o en el entorno local y no se guardan permanentemente en el servidor.",
+            cookieTitle: "2. Cookies",
+            cookieDesc: "Usamos cookies para proporcionar servicios personalizados.",
+            cookieList1: "Las cookies son pequeños fragmentos de información enviados por el servidor al navegador del usuario y almacenados en el disco duro del usuario.",
+            cookieList2: "Google AdSense: Usamos Google AdSense. Google y sus socios pueden usar cookies para mostrar anuncios basados en visitas a este u otros sitios. Puedes optar por no recibir publicidad personalizada en la Configuración de Anuncios de Google.",
+            thirdPartyTitle: "3. Provisión a Terceros",
+            thirdPartyDesc: "En principio, no proporcionamos información personal a terceros, excepto cuando lo exija la ley.",
+            protectionTitle: "4. Protección",
+            protectionDesc: "Tomamos medidas para proteger los datos mínimos del usuario. Sin embargo, la transmisión por Internet nunca es 100% segura.",
+            changeTitle: "5. Cambios en la Política",
+            changeDesc: "Esta política puede modificarse para reflejar cambios legales o de servicio. Los cambios se notificarán en el sitio.",
+            inquiryTitle: "6. Consulta",
+            inquiryDesc: "Por favor contáctanos en hoyakdh@icloud.com para consultas de privacidad.",
+            lastModified: "Última Modificación: 3 de febrero de 2026"
+        },
+        footer: {
+            creator: "Creador: hoyakdh@icloud.com",
+            aboutBtn: "Sobre Nosotros",
+            privacyBtn: "Política de Privacidad"
+        }
     }
 };

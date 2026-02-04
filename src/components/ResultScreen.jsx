@@ -3,6 +3,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { results } from '../data/results';
 import { locales } from '../data/locales';
+import { Helmet } from 'react-helmet-async';
 
 const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode, language }) => {
     const resultData = results[mbti];
@@ -121,10 +122,10 @@ const ResultScreen = ({ mbti, userName, onReset, onCollection, isDarkMode, langu
             padding: '2rem 1rem',
             transition: 'background-color 0.5s ease'
         }}>
-            {/* <Helmet>
+            <Helmet>
                 <title>{`${userName}님의 결과: ${currentCharacter} - 어린이 마음 동물 MBTI`}</title>
                 <meta name="description" content={`나의 MBTI 동물 친구는 ${currentCharacter}입니다! 당신의 성향을 알아보세요.`} />
-            </Helmet> */}
+            </Helmet>
 
             {/* Main Card Container */}
             <div ref={captureRef} className="capture-target" style={{

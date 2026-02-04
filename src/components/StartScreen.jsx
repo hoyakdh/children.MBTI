@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { locales } from '../data/locales';
+import { Helmet } from 'react-helmet-async';
 
 const StartScreen = ({ onStart, isDarkMode, language }) => {
     const [name, setName] = useState('');
@@ -27,7 +28,9 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
         inputBorder: isDarkMode ? '#e94560' : '#FFC0CB',
         inputText: isDarkMode ? '#fff' : '#555',
         buttonActive: isDarkMode ? '#e94560' : '#FF6B6B',
-        buttonInactive: isDarkMode ? '#333' : '#E0E0E0'
+        buttonInactive: isDarkMode ? '#333' : '#E0E0E0',
+        sectionTitle: isDarkMode ? '#e94560' : '#8B4513',
+        descText: isDarkMode ? '#e0e0e0' : '#555'
     };
 
     return (
@@ -41,7 +44,10 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
             padding: '2rem',
             transition: 'background-color 0.5s ease'
         }}>
-            {/* Removed Helmet for debugging */}
+            <Helmet>
+                <title>{t.startTitle.replace(/<br \/>/g, ' ')}</title>
+                <meta name="description" content={t.startDescription} />
+            </Helmet>
 
             <div style={{
                 background: theme.cardBackground,
@@ -120,6 +126,33 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
                         {t.startBtn}
                     </button>
                 </div>
+            </div>
+
+            {/* Description Section for Content Value */}
+            <div style={{
+                marginTop: '3rem',
+                maxWidth: '600px',
+                textAlign: 'center',
+                padding: '0 1rem'
+            }}>
+                <h3 style={{
+                    color: theme.sectionTitle,
+                    fontSize: '1.3rem',
+                    marginBottom: '1rem',
+                    fontFamily: '"Gaegu", sans-serif',
+                    transition: 'color 0.5s ease'
+                }}>
+                    {t.startDescriptionTitle}
+                </h3>
+                <p style={{
+                    color: theme.descText,
+                    lineHeight: '1.6',
+                    fontSize: '1rem',
+                    wordBreak: 'keep-all',
+                    transition: 'color 0.5s ease'
+                }}>
+                    {t.startDescription}
+                </p>
             </div>
 
             <style>{`
