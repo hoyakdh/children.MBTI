@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+
 import { locales } from '../data/locales';
 
 const AboutPage = ({ isDarkMode, language }) => {
@@ -31,10 +31,7 @@ const AboutPage = ({ isDarkMode, language }) => {
 
     return (
         <div style={containerStyle}>
-            <Helmet>
-                <title>{t.about.title} - {t.startTitle.replace(/<br \/>/g, '')}</title>
-                <meta name="description" content={t.about.introDesc} />
-            </Helmet>
+
 
             <h1 style={titleStyle}>{t.about.title}</h1>
 

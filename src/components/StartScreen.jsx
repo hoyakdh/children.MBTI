@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { locales } from '../data/locales';
-import { Helmet } from 'react-helmet-async';
+
 
 const StartScreen = ({ onStart, isDarkMode, language }) => {
     const [name, setName] = useState('');
@@ -44,10 +44,7 @@ const StartScreen = ({ onStart, isDarkMode, language }) => {
             padding: '2rem',
             transition: 'background-color 0.5s ease'
         }}>
-            <Helmet>
-                <title>{t.startTitle.replace(/<br \/>/g, ' ')}</title>
-                <meta name="description" content={t.startDescription} />
-            </Helmet>
+
 
             <div style={{
                 background: theme.cardBackground,

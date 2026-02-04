@@ -1,7 +1,7 @@
 import React from 'react';
 import { questions } from '../data/questions';
 import { locales } from '../data/locales';
-import { Helmet } from 'react-helmet-async';
+
 
 const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode, language }) => {
     const currentQuestion = questions[questionIndex];
@@ -34,10 +34,7 @@ const QuestionScreen = ({ questionIndex, onAnswer, isDarkMode, language }) => {
             padding: '2rem',
             transition: 'background-color 0.5s ease'
         }}>
-            <Helmet>
-                <title>질문 {questionIndex + 1} - 어린이 마음 동물 MBTI</title>
-                <meta name="robots" content="noindex" />
-            </Helmet>
+
             <div style={{
                 background: theme.cardBackground,
                 borderRadius: '20px',

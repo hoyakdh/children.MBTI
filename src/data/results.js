@@ -4,12 +4,14 @@ export const results = {
         character: {
             ko: "성실한 곰 🐻",
             en: "Diligent Bear 🐻",
-            es: "Oso Diligente 🐻"
+            es: "Oso Diligente 🐻",
+            ja: "真面目なクマ 🐻"
         },
         subTitle: {
             ko: "꼼꼼 대장",
             en: "Detail Oriented",
-            es: "Orientado al Detalle"
+            es: "Orientado al Detalle",
+            ja: "几帳面なリーダー"
         },
         description: {
             ko: [
@@ -29,27 +31,37 @@ export const results = {
                 "Cumple bien las promesas y valora las reglas.",
                 "Siempre mantiene las cosas organizadas y limpias.",
                 "Tiene la persistencia para terminar lo que empezó."
+            ],
+            ja: [
+                "几帳面で責任感が本当に強いよ。",
+                "約束をよく守ってルールを大切にするよ。",
+                "整理整頓が得意で周りがいつも綺麗だよ。",
+                "始めたことは最後までやり遂げる根気があるよ。"
             ]
         },
         tip: {
             ko: "네가 꼼꼼하게 챙겨줘서 정말 든든해.",
             en: "It's so reassuring that you take care of things thoroughly.",
-            es: "Es muy tranquilizador que te ocupes de las cosas minuciosamente."
+            es: "Es muy tranquilizador que te ocupes de las cosas minuciosamente.",
+            ja: "君がしっかり準備してくれるから本当に心強いよ。"
         },
         strengths: {
             ko: ["계획대로 일이 착착 진행될 때", "규칙을 잘 지켜서 칭찬받을 때"],
             en: ["When things go exactly according to plan", "When praised for following rules well"],
-            es: ["Cuando las cosas salen exactamente según lo planeado", "Cuando te elogian por seguir bien las reglas"]
+            es: ["Cuando las cosas salen exactamente según lo planeado", "Cuando te elogian por seguir bien las reglas"],
+            ja: ["計画通りに順調に進む時", "ルールをよく守って褒められた時"]
         },
         bestMatch: {
             ko: ["명랑한 강아지 🐶", "상냥한 코끼리 🐘"],
             en: ["Cheerful Puppy 🐶", "Gentle Elephant 🐘"],
-            es: ["Cachorro Alegre 🐶", "Elefante Gentil 🐘"]
+            es: ["Cachorro Alegre 🐶", "Elefante Gentil 🐘"],
+            ja: ["明るい子犬 🐶", "優しいゾウ 🐘"]
         },
         books: {
             ko: ["마법의 시간여행", "Why? 시리즈"],
             en: ["Magic Tree House", "National Geographic Kids"],
-            es: ["La Casa del Árbol Mágica", "National Geographic Kids"]
+            es: ["La Casa del Árbol Mágica", "National Geographic Kids"],
+            ja: ["マジック・ツリーハウス", "Why?シリーズ"]
         },
         features: { energy: 2, warmth: 3, creativity: 2, thoroughness: 5, leadership: 3 }
     },
@@ -58,12 +70,14 @@ export const results = {
         character: {
             ko: "다정한 펭귄 🐧",
             en: "Friendly Penguin 🐧",
-            es: "Pingüino Amigable 🐧"
+            es: "Pingüino Amigable 🐧",
+            ja: "親切なペンギン 🐧"
         },
         subTitle: {
             ko: "배려 천사",
             en: "Caring Angel",
-            es: "Ángel Cariñoso"
+            es: "Ángel Cariñoso",
+            ja: "思いやり天使"
         },
         description: {
             ko: [
@@ -83,27 +97,37 @@ export const results = {
                 "Tranquilo pero siempre confiable para los amigos.",
                 "Tiene buena memoria y recuerda pequeños detalles sobre los amigos.",
                 "Entiende y empatiza bien con los sentimientos de los demás."
+            ],
+            ja: [
+                "友達をよく気遣う温かい心を持っているよ。",
+                "静かだけど友達にとってはいつも心強い存在だよ。",
+                "記憶力が良くて友達の些細なこともよく覚えているよ。",
+                "他の人の感情をよく理解して共感するよ。"
             ]
         },
         tip: {
             ko: "친구를 생각하는 네 마음이 참 예쁘다.",
             en: "Your heart thinking of friends is so beautiful.",
-            es: "Tu corazón pensando en los amigos es tan hermoso."
+            es: "Tu corazón pensando en los amigos es tan hermoso.",
+            ja: "友達を思う君の心が本当に綺麗だよ。"
         },
         strengths: {
             ko: ["도와준 친구가 기뻐할 때", "익숙하고 편안한 곳에 있을 때"],
             en: ["When a friend I helped is happy", "When in a familiar and comfortable place"],
-            es: ["Cuando un amigo al que ayudé está feliz", "Cuando estoy en un lugar familiar y cómodo"]
+            es: ["Cuando un amigo al que ayudé está feliz", "Cuando estoy en un lugar familiar y cómodo"],
+            ja: ["手助けした友達が喜んでくれた時", "慣れ親しんだ場所にいる時"]
         },
         bestMatch: {
             ko: ["용감한 호랑이 🐯", "재주 많은 비버 🦫"],
             en: ["Brave Tiger 🐯", "Talented Beaver 🦫"],
-            es: ["Tigre Valiente 🐯", "Castor Talentoso 🦫"]
+            es: ["Tigre Valiente 🐯", "Castor Talentoso 🦫"],
+            ja: ["勇敢なトラ 🐯", "器用なビーバー 🦫"]
         },
         books: {
             ko: ["알사탕", "만복이네 떡집"],
             en: ["Wonder", "Charlotte's Web"],
-            es: ["La Lección de August", "La Telaraña de Carlota"]
+            es: ["La Lección de August", "La Telaraña de Carlota"],
+            ja: ["ワンダー", "シャーロットのおくりもの"]
         },
         features: { energy: 2, warmth: 5, creativity: 2, thoroughness: 4, leadership: 2 }
     },
@@ -112,12 +136,14 @@ export const results = {
         character: {
             ko: "신비로운 부엉이 🦉",
             en: "Mysterious Owl 🦉",
-            es: "Búho Misterioso 🦉"
+            es: "Búho Misterioso 🦉",
+            ja: "神秘的なフクロウ 🦉"
         },
         subTitle: {
             ko: "속마음 박사",
             en: "Insightful Thinker",
-            es: "Pensador Perspicaz"
+            es: "Pensador Perspicaz",
+            ja: "心の中博士"
         },
         description: {
             ko: [
@@ -137,27 +163,37 @@ export const results = {
                 "Le gusta tener tiempo a solas para pensar.",
                 "Interesado en hacer del mundo un lugar mejor.",
                 "Imaginativo y le encantan las conversaciones significativas."
+            ],
+            ja: [
+                "友達の心を深く理解してくれる賢い友達だよ。",
+                "1人の時間を持って考えるのが好きだよ。",
+                "より良い世界を作ることに興味があるよ。",
+                "想像力が豊かで意味のある会話が好きだよ。"
             ]
         },
         tip: {
             ko: "네 생각은 정말 깊고 멋지구나.",
             en: "Your thoughts are really deep and cool.",
-            es: "Tus pensamientos son realmente profundos y geniales."
+            es: "Tus pensamientos son realmente profundos y geniales.",
+            ja: "君の考えは本当に深くて素敵だね。"
         },
         strengths: {
             ko: ["마음이 통하는 친구와 이야기할 때", "나의 상상이 이루어질 때"],
             en: ["Talking with a like-minded friend", "When my imagination comes true"],
-            es: ["Hablando con un amigo con ideas afines", "Cuando mi imaginación se hace realidad"]
+            es: ["Hablando con un amigo con ideas afines", "Cuando mi imaginación se hace realidad"],
+            ja: ["心が通じる友達と話す時", "私の想像が実現した時"]
         },
         bestMatch: {
             ko: ["활발한 다람쥐 🐿️", "재치 있는 앵무새 🦜"],
             en: ["Energetic Squirrel 🐿️", "Witty Parrot 🦜"],
-            es: ["Ardilla Energética 🐿️", "Loro Ingenioso 🦜"]
+            es: ["Ardilla Energética 🐿️", "Loro Ingenioso 🦜"],
+            ja: ["活発なリス 🐿️", "機知に富んだオウム 🦜"]
         },
         books: {
             ko: ["어린 왕자", "모모"],
             en: ["The Little Prince", "Momo"],
-            es: ["El Principito", "Momo"]
+            es: ["El Principito", "Momo"],
+            ja: ["星の王子さま", "モモ"]
         },
         features: { energy: 2, warmth: 4, creativity: 5, thoroughness: 3, leadership: 3 }
     },
@@ -166,12 +202,14 @@ export const results = {
         character: {
             ko: "지혜로운 여우 🦊",
             en: "Wise Fox 🦊",
-            es: "Zorro Sabio 🦊"
+            es: "Zorro Sabio 🦊",
+            ja: "賢いキツネ 🦊"
         },
         subTitle: {
             ko: "똑똑한 전략가",
             en: "Smart Strategist",
-            es: "Estratega Inteligente"
+            es: "Estratega Inteligente",
+            ja: "賢い戦略家"
         },
         description: {
             ko: [
@@ -191,27 +229,37 @@ export const results = {
                 "Lee o investiga profundamente sobre cosas curiosas.",
                 "Le gusta planificar con antelación y ponerlo en acción.",
                 "Piensa lógicamente y encuentra métodos eficientes."
+            ],
+            ja: [
+                "難しい問題が起きても解決方法をよく見つけるよ。",
+                "気になることは本を読んだり調べたりして深く探求するよ。",
+                "あらかじめ計画を立てて実践するのが好きだよ。",
+                "論理的に考えて効率的な方法を見つけるよ。"
             ]
         },
         tip: {
             ko: "어떻게 그런 멋진 방법을 생각했니?",
             en: "How did you think of such a cool method?",
-            es: "¿Cómo pensaste en un método tan genial?"
+            es: "¿Cómo pensaste en un método tan genial?",
+            ja: "どうやってそんな素敵な方法を思いついたの？"
         },
         strengths: {
             ko: ["어려운 문제를 척척 해결할 때", "새로운 지식을 알게 되었을 때"],
             en: ["When solving difficult problems easily", "When learning new knowledge"],
-            es: ["Al resolver problemas difíciles fácilmente", "Al aprender nuevos conocimientos"]
+            es: ["Al resolver problemas difíciles fácilmente", "Al aprender nuevos conocimientos"],
+            ja: ["難しい問題をスラスラ解決した時", "新しい知識を知った時"]
         },
         bestMatch: {
             ko: ["대담한 독수리 🦅", "명랑한 강아지 🐶"],
             en: ["Bold Eagle 🦅", "Cheerful Puppy 🐶"],
-            es: ["Águila Audaz 🦅", "Cachorro Alegre 🐶"]
+            es: ["Águila Audaz 🦅", "Cachorro Alegre 🐶"],
+            ja: ["大胆なワシ 🦅", "明るい子犬 🐶"]
         },
         books: {
             ko: ["과학 탐정 셜록 홈즈", "엔더의 게임"],
             en: ["Sherlock Holmes", "Ender's Game"],
-            es: ["Sherlock Holmes", "El Juego de Ender"]
+            es: ["Sherlock Holmes", "El Juego de Ender"],
+            ja: ["名探偵コナン", "エンダーのゲーム"]
         },
         features: { energy: 2, warmth: 2, creativity: 4, thoroughness: 4, leadership: 4 }
     },
@@ -220,12 +268,14 @@ export const results = {
         character: {
             ko: "재주 많은 비버 🦫",
             en: "Talented Beaver 🦫",
-            es: "Castor Talentoso 🦫"
+            es: "Castor Talentoso 🦫",
+            ja: "器用なビーバー 🦫"
         },
         subTitle: {
             ko: "만들기 대장",
             en: "Master Maker",
-            es: "Maestro Creador"
+            es: "Maestro Creador",
+            ja: "ものづくり隊長"
         },
         description: {
             ko: [
@@ -245,27 +295,37 @@ export const results = {
                 "Juzga las situaciones rápidamente y resuelve bien los problemas.",
                 "Disfruta explorando y observando libremente.",
                 "Muy hábil en el uso de herramientas."
+            ],
+            ja: [
+                "手先が器用で何かを作るのが好きだよ。",
+                "状況を素早く判断して問題をよく解決するよ。",
+                "自由に探検したり観察したりするのを楽しむよ。",
+                "道具を使うコツがとても優れているよ。"
             ]
         },
         tip: {
             ko: "와, 너는 정말 손재주가 좋구나!",
             en: "Wow, you are really handy!",
-            es: "¡Vaya, eres realmente hábil!"
+            es: "¡Vaya, eres realmente hábil!",
+            ja: "わあ、本当に手先が器用だね！"
         },
         strengths: {
             ko: ["내 손으로 무언가 완성했을 때", "자유롭게 이곳저곳 탐험할 때"],
             en: ["When I finish making something with my hands", "When exploring freely here and there"],
-            es: ["Cuando termino de hacer algo con mis manos", "Al explorar libremente aquí y allá"]
+            es: ["Cuando termino de hacer algo con mis manos", "Al explorar libremente aquí y allá"],
+            ja: ["自分の手で何かを完成させた時", "自由にあちこち探検する時"]
         },
         bestMatch: {
             ko: ["듬직한 사자 🦁", "다정한 펭귄 🐧"],
             en: ["Reliable Lion 🦁", "Friendly Penguin 🐧"],
-            es: ["León Confiable 🦁", "Pingüino Amigable 🐧"]
+            es: ["León Confiable 🦁", "Pingüino Amigable 🐧"],
+            ja: ["頼もしいライオン 🦁", "親切なペンギン 🐧"]
         },
         books: {
             ko: ["로빈슨 크루소", "에디슨"],
             en: ["Robinson Crusoe", "Who Was Thomas Alva Edison?"],
-            es: ["Robinson Crusoe", "¿Quién fue Thomas Alva Edison?"]
+            es: ["Robinson Crusoe", "¿Quién fue Thomas Alva Edison?"],
+            ja: ["ロビンソン・クルーソー", "エジソン"]
         },
         features: { energy: 3, warmth: 2, creativity: 4, thoroughness: 3, leadership: 2 }
     },
@@ -274,12 +334,14 @@ export const results = {
         character: {
             ko: "감성적인 고양이 🐱",
             en: "Sentimental Cat 🐱",
-            es: "Gato Sentimental 🐱"
+            es: "Gato Sentimental 🐱",
+            ja: "感性豊かなネコ 🐱"
         },
         subTitle: {
             ko: "예술가",
             en: "Artist",
-            es: "Artista"
+            es: "Artista",
+            ja: "アーティスト"
         },
         description: {
             ko: [
@@ -299,27 +361,37 @@ export const results = {
                 "Prefiere expresarse a través del dibujo o el canto en lugar de palabras.",
                 "Amable, humilde y considerado con los demás.",
                 "Tiene un espíritu libre y no le gusta ser restringido."
+            ],
+            ja: [
+                "美しいものが好きで芸術的センスが優れているよ。",
+                "言葉より絵や歌で表現するのが好きだよ。",
+                "優しくて謙虚で他の人を気遣うよ。",
+                "自由な魂を持っていて束縛されるのは嫌いだよ。"
             ]
         },
         tip: {
             ko: "네가 만든 건 정말 느낌이 있어.",
             en: "What you made really has a vibe.",
-            es: "Lo que hiciste realmente tiene estilo."
+            es: "Lo que hiciste realmente tiene estilo.",
+            ja: "君が作ったものは本当にセンスがあるね。"
         },
         strengths: {
             ko: ["나만의 방식으로 멋지게 표현할 때", "친한 친구와 편안하게 놀 때"],
             en: ["When expressing nicely in my own way", "When playing comfortably with a close friend"],
-            es: ["Al expresarse muy bien a mi manera", "Al jugar cómodamente con un amigo cercano"]
+            es: ["Al expresarse muy bien a mi manera", "Al jugar cómodamente con un amigo cercano"],
+            ja: ["自分なりの方法で素敵に表現した時", "仲の良い友達と気楽に遊ぶ時"]
         },
         bestMatch: {
             ko: ["상냥한 코끼리 🐘", "따뜻한 골든 리트리버 🐕"],
             en: ["Gentle Elephant 🐘", "Warm Golden Retriever 🐕"],
-            es: ["Elefante Gentil 🐘", "Golden Retriever Cálido 🐕"]
+            es: ["Elefante Gentil 🐘", "Golden Retriever Cálido 🐕"],
+            ja: ["優しいゾウ 🐘", "温かいゴールデンレトリバー 🐕"]
         },
         books: {
             ko: ["구름빵", "비밀의 화원"],
             en: ["Cloud Bread", "The Secret Garden"],
-            es: ["Pan de Nube", "El Jardín Secreto"]
+            es: ["Pan de Nube", "El Jardín Secreto"],
+            ja: ["パンどろぼう", "秘密の花園"]
         },
         features: { energy: 2, warmth: 4, creativity: 5, thoroughness: 2, leadership: 2 }
     },
@@ -328,12 +400,14 @@ export const results = {
         character: {
             ko: "몽상가 돌고래 🐬",
             en: "Dreamer Dolphin 🐬",
-            es: "Delfín Soñador 🐬"
+            es: "Delfín Soñador 🐬",
+            ja: "夢見るイルカ 🐬"
         },
         subTitle: {
             ko: "상상 대장",
             en: "IMAGINATION KING",
-            es: "REY DE LA IMAGINACIÓN"
+            es: "REY DE LA IMAGINACIÓN",
+            ja: "想像隊長"
         },
         description: {
             ko: [
@@ -353,27 +427,37 @@ export const results = {
                 "Parece tranquilo por fuera pero lleno de pasión por dentro.",
                 "Tiene sus propias creencias y valores preciosos.",
                 "Ama las historias hermosas y el mundo de los sueños."
+            ],
+            ja: [
+                "思う存分想像の翼を広げるのが好きだよ。",
+                "外見は静かに見えるけど心の中は情熱で溢れているよ。",
+                "自分だけの大切な信念と価値観を持っているよ。",
+                "美しい物語と夢見る世界を愛しているよ。"
             ]
         },
         tip: {
             ko: "네 상상 속 이야기는 정말 재미있어!",
             en: "The story in your imagination is really fun!",
-            es: "¡La historia en tu imaginación es muy divertida!"
+            es: "¡La historia en tu imaginación es muy divertida!",
+            ja: "君の想像の中の話は本当に面白いね！"
         },
         strengths: {
             ko: ["자유롭게 상상하고 꿈꿀 때", "글이나 그림으로 마음을 표현할 때"],
             en: ["When imagining and dreaming freely", "When expressing feelings through writing or drawing"],
-            es: ["Al imaginar y soñar libremente", "Al expresar sentimientos a través de la escritura o el dibujo"]
+            es: ["Al imaginar y soñar libremente", "Al expresar sentimientos a través de la escritura o el dibujo"],
+            ja: ["自由に想像して夢見る時", "文章や絵で心を表現する時"]
         },
         bestMatch: {
             ko: ["따뜻한 골든 리트리버 🐕", "신비로운 부엉이 🦉"],
             en: ["Warm Golden Retriever 🐕", "Mysterious Owl 🦉"],
-            es: ["Golden Retriever Cálido 🐕", "Búho Misterioso 🦉"]
+            es: ["Golden Retriever Cálido 🐕", "Búho Misterioso 🦉"],
+            ja: ["温かいゴールデンレトリバー 🐕", "神秘的なフクロウ 🦉"]
         },
         books: {
             ko: ["해리 포터", "빨강머리 앤"],
             en: ["Harry Potter", "Anne of Green Gables"],
-            es: ["Harry Potter", "Ana de las Tejas Verdes"]
+            es: ["Harry Potter", "Ana de las Tejas Verdes"],
+            ja: ["ハリー・ポッター", "赤毛のアン"]
         },
         features: { energy: 2, warmth: 4, creativity: 5, thoroughness: 2, leadership: 2 }
     },
@@ -382,12 +466,14 @@ export const results = {
         character: {
             ko: "아이디어 뱅크 침팬지 🐒",
             en: "Idea Bank Chimpanzee 🐒",
-            es: "Chimpancé Banco de Ideas 🐒"
+            es: "Chimpancé Banco de Ideas 🐒",
+            ja: "アイデアバンク チンパンジー 🐒"
         },
         subTitle: {
             ko: "호기심 박사",
             en: "Curiosity Doctor",
-            es: "Doctor Curiosidad"
+            es: "Doctor Curiosidad",
+            ja: "好奇心博士"
         },
         description: {
             ko: [
@@ -407,27 +493,37 @@ export const results = {
                 "Le gusta analizar lógicamente y entender principios.",
                 "Disfruta del tiempo pensando profundamente a solas.",
                 "Sorprende a los amigos con ideas brillantes."
+            ],
+            ja: [
+                "世界の全てのことが気になる好奇心旺盛な発明家だよ。",
+                "論理的に分析して原理を把握するのが好きだよ。",
+                "一人でじっくり考える時間を楽しむよ。",
+                "奇抜なアイデアで友達を驚かせるよ。"
             ]
         },
         tip: {
             ko: "그거 정말 기발한 생각인데?",
             en: "That's a really brilliant idea!",
-            es: "¡Esa es una idea realmente brillante!"
+            es: "¡Esa es una idea realmente brillante!",
+            ja: "それ本当に奇抜な考えだね！"
         },
         strengths: {
             ko: ["새로운 원리를 깨달았을 때", "나만의 아이디어로 무언가 만들 때"],
             en: ["When realizing a new principle", "When making something with my own idea"],
-            es: ["Al darse cuenta de un nuevo principio", "Al hacer algo con mi propia idea"]
+            es: ["Al darse cuenta de un nuevo principio", "Al hacer algo con mi propia idea"],
+            ja: ["新しい原理に気づいた時", "自分だけのアイデアで何かを作る時"]
         },
         bestMatch: {
             ko: ["재치 있는 앵무새 🦜", "듬직한 사자 🦁"],
             en: ["Witty Parrot 🦜", "Reliable Lion 🦁"],
-            es: ["Loro Ingenioso 🦜", "León Confiable 🦁"]
+            es: ["Loro Ingenioso 🦜", "León Confiable 🦁"],
+            ja: ["機知に富んだオウム 🦜", "頼もしいライオン 🦁"]
         },
         books: {
             ko: ["수학 귀신", "이상한 과학 나라의 앨리스"],
             en: ["The Number Devil", "Alice in Quantumland"],
-            es: ["El Diablo de los Números", "Alicia en el País de los Cuantos"]
+            es: ["El Diablo de los Números", "Alicia en el País de los Cuantos"],
+            ja: ["数の悪魔", "量子物理学の国のアリス"]
         },
         features: { energy: 2, warmth: 2, creativity: 5, thoroughness: 3, leadership: 2 }
     },
@@ -436,12 +532,14 @@ export const results = {
         character: {
             ko: "용감한 호랑이 🐯",
             en: "Brave Tiger 🐯",
-            es: "Tigre Valiente 🐯"
+            es: "Tigre Valiente 🐯",
+            ja: "勇敢なトラ 🐯"
         },
         subTitle: {
             ko: "모험가",
             en: "Adventurer",
-            es: "Aventurero"
+            es: "Aventurero",
+            ja: "冒険家"
         },
         description: {
             ko: [
@@ -461,27 +559,37 @@ export const results = {
                 "Lleno de energía y actúa muy rápido.",
                 "Le gusta salir con amigos y es popular.",
                 "Tiene la capacidad de resolver problemas de inmediato cuando surgen."
+            ],
+            ja: [
+                "新しいことに挑戦するのが好きな冒険家だよ。",
+                "エネルギーが溢れていて行動がすごく早いよ。",
+                "友達と遊ぶのが好きで人気者だよ。",
+                "問題が起きたらすぐに解決する能力があるよ。"
             ]
         },
         tip: {
             ko: "용기 있게 도전하는 모습이 멋져!",
             en: "It's cool how you bravely accept challenges!",
-            es: "¡Es genial cómo aceptas valientemente los desafíos!"
+            es: "¡Es genial cómo aceptas valientemente los desafíos!",
+            ja: "勇気を持って挑戦する姿が素敵だね！"
         },
         strengths: {
             ko: ["친구들과 신나게 활동할 때", "빠르게 문제를 해결했을 때"],
             en: ["When actively playing with friends", "When solving problems quickly"],
-            es: ["Al jugar activamente con amigos", "Al resolver problemas rápidamente"]
+            es: ["Al jugar activamente con amigos", "Al resolver problemas rápidamente"],
+            ja: ["友達と楽しく活動する時", "素早く問題を解決した時"]
         },
         bestMatch: {
             ko: ["다정한 펭귄 🐧", "상냥한 코끼리 🐘"],
             en: ["Friendly Penguin 🐧", "Gentle Elephant 🐘"],
-            es: ["Pingüino Amigable 🐧", "Elefante Gentil 🐘"]
+            es: ["Pingüino Amigable 🐧", "Elefante Gentil 🐘"],
+            ja: ["親切なペンギン 🐧", "優しいゾウ 🐘"]
         },
         books: {
             ko: ["퍼시 잭슨과 올림포스의 신", "원피스"],
             en: ["Percy Jackson", "One Piece"],
-            es: ["Percy Jackson", "One Piece"]
+            es: ["Percy Jackson", "One Piece"],
+            ja: ["パーシー・ジャクソン", "ワンピース"]
         },
         features: { energy: 5, warmth: 2, creativity: 3, thoroughness: 2, leadership: 4 }
     },
@@ -490,12 +598,14 @@ export const results = {
         character: {
             ko: "명랑한 강아지 🐶",
             en: "Cheerful Puppy 🐶",
-            es: "Cachorro Alegre 🐶"
+            es: "Cachorro Alegre 🐶",
+            ja: "明るい子犬 🐶"
         },
         subTitle: {
             ko: "분위기 메이커",
             en: "Mood Maker",
-            es: "Creador de Ambiente"
+            es: "Creador de Ambiente",
+            ja: "ムードメーカー"
         },
         description: {
             ko: [
@@ -515,27 +625,37 @@ export const results = {
                 "Le gusta bailar y cantar con amigos.",
                 "No tiene miedo de tener nuevas experiencias.",
                 "Desbordante de encanto que atrae la atención de los demás."
+            ],
+            ja: [
+                "どこでも楽しさと笑いを作り出すムードメーカーだよ。",
+                "友達と一緒に踊ったり歌ったりするのが好きだよ。",
+                "新しい経験をすることを恐れないよ。",
+                "人の目を引く魅力が溢れているよ。"
             ]
         },
         tip: {
             ko: "너랑 있으면 언제나 즐거워.",
             en: "It's always fun being with you.",
-            es: "Siempre es divertido estar contigo."
+            es: "Siempre es divertido estar contigo.",
+            ja: "君と一緒にいるといつも楽しいよ。"
         },
         strengths: {
             ko: ["친구들 앞에서 장기자랑 할 때", "신나는 파티나 놀이를 할 때"],
             en: ["When showing off talents in front of friends", "When having a fun party or game"],
-            es: ["Al mostrar talentos frente a amigos", "Al tener una fiesta o juego divertido"]
+            es: ["Al mostrar talentos frente a amigos", "Al tener una fiesta o juego divertido"],
+            ja: ["友達の前で特技を披露する時", "楽しいパーティーや遊びをする時"]
         },
         bestMatch: {
             ko: ["성실한 곰 🐻", "지혜로운 여우 🦊"],
             en: ["Diligent Bear 🐻", "Wise Fox 🦊"],
-            es: ["Oso Diligente 🐻", "Zorro Sabio 🦊"]
+            es: ["Oso Diligente 🐻", "Zorro Sabio 🦊"],
+            ja: ["真面目なクマ 🐻", "賢いキツネ 🦊"]
         },
         books: {
             ko: ["앗! 시리즈", "이상한 과자가게 전천당"],
             en: ["Horrible Histories", "Zenitendou"],
-            es: ["Horrible Histories", "Zenitendou"]
+            es: ["Horrible Histories", "Zenitendou"],
+            ja: ["サバイバルシリーズ", "ふしぎ駄菓子屋 銭天堂"]
         },
         features: { energy: 5, warmth: 4, creativity: 4, thoroughness: 2, leadership: 3 }
     },
@@ -544,12 +664,14 @@ export const results = {
         character: {
             ko: "활발한 다람쥐 🐿️",
             en: "Energetic Squirrel 🐿️",
-            es: "Ardilla Energética 🐿️"
+            es: "Ardilla Energética 🐿️",
+            ja: "活発なリス 🐿️"
         },
         subTitle: {
             ko: "인기쟁이",
             en: "Popular Kid",
-            es: "Chico Popular"
+            es: "Chico Popular",
+            ja: "人気者"
         },
         description: {
             ko: [
@@ -569,27 +691,37 @@ export const results = {
                 "Lleno de imaginación y pasión, siempre lleno de energía.",
                 "Hace sentir bien a los amigos de alrededor con energía positiva.",
                 "Le gusta pensar libremente y planear cosas divertidas."
+            ],
+            ja: [
+                "新しい友達が好きで誰とでも仲良くなれるよ。",
+                "想像力と情熱が溢れていていつもエネルギーがいっぱいだよ。",
+                "ポジティブなエネルギーで周りの友達を気分良くさせるよ。",
+                "自由に考えて面白いことを計画するのが好きだよ。"
             ]
         },
         tip: {
             ko: "너는 정말 에너지가 넘치는구나!",
             en: "You are really full of energy!",
-            es: "¡Estás realmente lleno de energía!"
+            es: "¡Estás realmente lleno de energía!",
+            ja: "君は本当にエネルギーが溢れているね！"
         },
         strengths: {
             ko: ["새로운 친구를 만났을 때", "내 아이디어에 친구들이 공감해줄 때"],
             en: ["When meeting a new friend", "When friends sympathize with my idea"],
-            es: ["Al conocer a un nuevo amigo", "Cuando los amigos simpatizan con mi idea"]
+            es: ["Al conocer a un nuevo amigo", "Cuando los amigos simpatizan con mi idea"],
+            ja: ["新しい友達に出会った時", "自分のアイデアに友達が共感してくれた時"]
         },
         bestMatch: {
             ko: ["신비로운 부엉이 🦉", "대담한 독수리 🦅"],
             en: ["Mysterious Owl 🦉", "Bold Eagle 🦅"],
-            es: ["Búho Misterioso 🦉", "Águila Audaz 🦅"]
+            es: ["Búho Misterioso 🦉", "Águila Audaz 🦅"],
+            ja: ["神秘的なフクロウ 🦉", "大胆なワシ 🦅"]
         },
         books: {
             ko: ["찰리와 초콜릿 공장", "삐삐 롱스타킹"],
             en: ["Charlie and the Chocolate Factory", "Pippi Longstocking"],
-            es: ["Charlie y la Fábrica de Chocolate", "Pippi Calzaslargas"]
+            es: ["Charlie y la Fábrica de Chocolate", "Pippi Calzaslargas"],
+            ja: ["チャーリーとチョコレート工場", "長くつ下のピッピ"]
         },
         features: { energy: 5, warmth: 5, creativity: 5, thoroughness: 2, leadership: 4 }
     },
@@ -598,12 +730,14 @@ export const results = {
         character: {
             ko: "재치 있는 앵무새 🦜",
             en: "Witty Parrot 🦜",
-            es: "Loro Ingenioso 🦜"
+            es: "Loro Ingenioso 🦜",
+            ja: "機知に富んだオウム 🦜"
         },
         subTitle: {
             ko: "말하기 대장",
             en: "Master Speaker",
-            es: "Maestro Orador"
+            es: "Maestro Orador",
+            ja: "おしゃべり隊長"
         },
         description: {
             ko: [
@@ -623,27 +757,37 @@ export const results = {
                 "Sabe mucho y tiene un gran sentido del humor.",
                 "Disfruta desafiando problemas difíciles.",
                 "Bueno para hablar y persuasivo con los amigos."
+            ],
+            ja: [
+                "他の人と話をしたり討論したりするのが好きだよ。",
+                "物知りでユーモアのセンスが抜群だよ。",
+                "難しい問題に挑戦するのを楽しむよ。",
+                "話術が巧みで友達を説得するのが上手だよ。"
             ]
         },
         tip: {
             ko: "네 이야기를 들으면 시간이 금방 가.",
             en: "Time flies when listening to your stories.",
-            es: "El tiempo vuela al escuchar tus historias."
+            es: "El tiempo vuela al escuchar tus historias.",
+            ja: "君の話を聞いていると時間が経つのが早いよ。"
         },
         strengths: {
             ko: ["친구들과 신나게 토론할 때", "어려운 문제를 기발하게 해결할 때"],
             en: ["When debating excitedly with friends", "When solving difficult problems ingeniously"],
-            es: ["Al debatir con entusiasmo con amigos", "Al resolver problemas difíciles ingeniosamente"]
+            es: ["Al debatir con entusiasmo con amigos", "Al resolver problemas difíciles ingeniosamente"],
+            ja: ["友達と楽しく討論する時", "難しい問題を奇抜に解決した時"]
         },
         bestMatch: {
             ko: ["신비로운 부엉이 🦉", "아이디어 뱅크 침팬지 🐒"],
             en: ["Mysterious Owl 🦉", "Idea Bank Chimpanzee 🐒"],
-            es: ["Búho Misterioso 🦉", "Chimpancé Banco de Ideas 🐒"]
+            es: ["Búho Misterioso 🦉", "Chimpancé Banco de Ideas 🐒"],
+            ja: ["神秘的なフクロウ 🦉", "アイデアバンク チンパンジー 🐒"]
         },
         books: {
             ko: ["추리 천재 엉덩이 탐정", "괴짜 과학자들의 특별한 실험실"],
             en: ["Butt Detective", "Horrible Science"],
-            es: ["Detective Trasero", "Horrible Science"]
+            es: ["Detective Trasero", "Horrible Science"],
+            ja: ["おしりたんてい", "空想科学読本"]
         },
         features: { energy: 4, warmth: 2, creativity: 5, thoroughness: 2, leadership: 4 }
     },
@@ -652,12 +796,14 @@ export const results = {
         character: {
             ko: "듬직한 사자 🦁",
             en: "Reliable Lion 🦁",
-            es: "León Confiable 🦁"
+            es: "León Confiable 🦁",
+            ja: "頼もしいライオン 🦁"
         },
         subTitle: {
             ko: "리더",
             en: "Leader",
-            es: "Líder"
+            es: "Líder",
+            ja: "リーダー"
         },
         description: {
             ko: [
@@ -677,27 +823,37 @@ export const results = {
                 "Valora la planificación y el cumplimiento de las normas.",
                 "Honesto y decisivo, por lo que los amigos confían y siguen.",
                 "Establece una meta y trabaja duro para lograrla hasta el final."
+            ],
+            ja: [
+                "責任感が強くて友達を引っ張るリーダーシップがあるよ。",
+                "計画を立ててルールを守ることを大切に考えるよ。",
+                "正直で決断力があって友達が信頼してついていくよ。",
+                "目標を決めたら最後まで努力してやり遂げるよ。"
             ]
         },
         tip: {
             ko: "네가 이끌어줘서 일이 잘 해결됐어.",
             en: "Things worked out well because you led.",
-            es: "Las cosas salieron bien porque tú lideraste."
+            es: "Las cosas salieron bien porque tú lideraste.",
+            ja: "君が引っ張ってくれたからうまくいったよ。"
         },
         strengths: {
             ko: ["리더가 되어 친구들을 이끌 때", "계획대로 일이 착착 진행될 때"],
             en: ["When becoming a leader and leading friends", "When things go exactly according to plan"],
-            es: ["Al convertirse en líder y guiar a los amigos", "Cuando las cosas salen exactamente según lo planeado"]
+            es: ["Al convertirse en líder y guiar a los amigos", "Cuando las cosas salen exactamente según lo planeado"],
+            ja: ["リーダーになって友達を引っ張る時", "計画通りに順調に進む時"]
         },
         bestMatch: {
             ko: ["재주 많은 비버 🦫", "아이디어 뱅크 침팬지 🐒"],
             en: ["Talented Beaver 🦫", "Idea Bank Chimpanzee 🐒"],
-            es: ["Castor Talentoso 🦫", "Chimpancé Banco de Ideas 🐒"]
+            es: ["Castor Talentoso 🦫", "Chimpancé Banco de Ideas 🐒"],
+            ja: ["器用なビーバー 🦫", "アイデアバンク チンパンジー 🐒"]
         },
         books: {
             ko: ["삼국지", "이순신"],
             en: ["Romance of the Three Kingdoms", "Admiral Yi Sun-sin"],
-            es: ["Romance de los Tres Reinos", "Almirante Yi Sun-sin"]
+            es: ["Romance de los Tres Reinos", "Almirante Yi Sun-sin"],
+            ja: ["三国志", "徳川家康"]
         },
         features: { energy: 4, warmth: 2, creativity: 2, thoroughness: 5, leadership: 5 }
     },
@@ -706,12 +862,14 @@ export const results = {
         character: {
             ko: "상냥한 코끼리 🐘",
             en: "Gentle Elephant 🐘",
-            es: "Elefante Gentil 🐘"
+            es: "Elefante Gentil 🐘",
+            ja: "優しいゾウ 🐘"
         },
         subTitle: {
             ko: "친절한 외교관",
             en: "Kind Diplomat",
-            es: "Diplomático Amable"
+            es: "Diplomático Amable",
+            ja: "親切な外交官"
         },
         description: {
             ko: [
@@ -731,27 +889,37 @@ export const results = {
                 "Cuida el estado de ánimo de los amigos y les ayuda a llevarse bien.",
                 "Valora la amistad y disfruta del tiempo con los amigos.",
                 "Fuerte sentido de responsabilidad y amable con los demás."
+            ],
+            ja: [
+                "周りの人をよく気遣って助けるのが好きだよ。",
+                "友達の気分をよく見て仲良くできるように助けるよ。",
+                "友情を大切にして友達と一緒に過ごす時間を楽しむよ。",
+                "責任感が強くて他の人に親切だよ。"
             ]
         },
         tip: {
             ko: "항상 친구들을 도와줘서 고마워.",
             en: "Thank you for always helping friends.",
-            es: "Gracias por ayudar siempre a los amigos."
+            es: "Gracias por ayudar siempre a los amigos.",
+            ja: "いつも友達を助けてくれてありがとう。"
         },
         strengths: {
             ko: ["친구를 도와주고 고맙다는 말을 들을 때", "다 함께 즐거운 시간을 보낼 때"],
             en: ["When helping a friend and being thanked", "When having a good time together"],
-            es: ["Al ayudar a un amigo y recibir agradecimiento", "Al pasar un buen rato juntos"]
+            es: ["Al ayudar a un amigo y recibir agradecimiento", "Al pasar un buen rato juntos"],
+            ja: ["友達を助けてありがとうと言われた時", "みんなで楽しい時間を過ごす時"]
         },
         bestMatch: {
             ko: ["감성적인 고양이 🐱", "용감한 호랑이 🐯"],
             en: ["Sentimental Cat 🐱", "Brave Tiger 🐯"],
-            es: ["Gato Sentimental 🐱", "Tigre Valiente 🐯"]
+            es: ["Gato Sentimental 🐱", "Tigre Valiente 🐯"],
+            ja: ["感性豊かなネコ 🐱", "勇敢なトラ 🐯"]
         },
         books: {
             ko: ["작은 아씨들", "오즈의 마법사"],
             en: ["Little Women", "The Wizard of Oz"],
-            es: ["Mujercitas", "El Mago de Oz"]
+            es: ["Mujercitas", "El Mago de Oz"],
+            ja: ["若草物語", "オズの魔法使い"]
         },
         features: { energy: 4, warmth: 5, creativity: 2, thoroughness: 4, leadership: 4 }
     },
@@ -760,12 +928,14 @@ export const results = {
         character: {
             ko: "따뜻한 골든 리트리버 🐕",
             en: "Warm Golden Retriever 🐕",
-            es: "Golden Retriever Cálido 🐕"
+            es: "Golden Retriever Cálido 🐕",
+            ja: "温かいゴールデンレトリバー 🐕"
         },
         subTitle: {
             ko: "멘토",
             en: "Mentor",
-            es: "Mentor"
+            es: "Mentor",
+            ja: "メンター"
         },
         description: {
             ko: [
@@ -785,27 +955,37 @@ export const results = {
                 "Da coraje a los amigos con energía positiva.",
                 "Considera importante compartir una amistad profunda con los amigos.",
                 "Trata de encontrar una manera para que todos sean felices."
+            ],
+            ja: [
+                "友達が成長するように助けて導くのが好きだよ。",
+                "ポジティブなエネルギーで友達に勇気を与えるよ。",
+                "友達と深い友情を分かち合うことを大切に考えるよ。",
+                "みんなが幸せになれる方法を見つけようと努力するよ。"
             ]
         },
         tip: {
             ko: "너는 정말 따뜻한 리더야.",
             en: "You are a truly warm leader.",
-            es: "Eres un líder verdaderamente cálido."
+            es: "Eres un líder verdaderamente cálido.",
+            ja: "君は本当に温かいリーダーだね。"
         },
         strengths: {
             ko: ["친구에게 용기를 북돋아 줄 때", "친구들과 마음이 통할 때"],
             en: ["When encouraging a friend", "When connecting with friends"],
-            es: ["Al animar a un amigo", "Al conectar con amigos"]
+            es: ["Al animar a un amigo", "Al conectar con amigos"],
+            ja: ["友達を励ます時", "友達と心が通じる時"]
         },
         bestMatch: {
             ko: ["몽상가 돌고래 🐬", "감성적인 고양이 🐱"],
             en: ["Dreamer Dolphin 🐬", "Sentimental Cat 🐱"],
-            es: ["Delfín Soñador 🐬", "Gato Sentimental 🐱"]
+            es: ["Delfín Soñador 🐬", "Gato Sentimental 🐱"],
+            ja: ["夢見るイルカ 🐬", "感性豊かなネコ 🐱"]
         },
         books: {
             ko: ["아낌없이 주는 나무", "Who? 시리즈"],
             en: ["The Giving Tree", "Who Was? Series"],
-            es: ["El Árbol Generoso", "¿Quién fue? Serie"]
+            es: ["El Árbol Generoso", "¿Quién fue? Serie"],
+            ja: ["おおきな木", "Who?シリーズ"]
         },
         features: { energy: 5, warmth: 5, creativity: 3, thoroughness: 4, leadership: 5 }
     },
@@ -814,12 +994,14 @@ export const results = {
         character: {
             ko: "대담한 독수리 🦅",
             en: "Bold Eagle 🦅",
-            es: "Águila Audaz 🦅"
+            es: "Águila Audaz 🦅",
+            ja: "大胆なワシ 🦅"
         },
         subTitle: {
             ko: "대장부",
             en: "Commander",
-            es: "Comandante"
+            es: "Comandante",
+            ja: "大将"
         },
         description: {
             ko: [
@@ -839,27 +1021,37 @@ export const results = {
                 "Desafía con confianza incluso cuando surgen dificultades.",
                 "Tiene buen ojo para el futuro y planifica bien.",
                 "Estrategiza y lidera al equipo para ganar."
+            ],
+            ja: [
+                "目標に向かって突き進む大胆なリーダーシップがあるよ。",
+                "難しいことがあっても自信を持って挑戦するよ。",
+                "未来を見通す目があって計画をよく立てるよ。",
+                "チームが勝てるように戦略を立てて引っ張るよ。"
             ]
         },
         tip: {
             ko: "목표를 향해 나아가는 모습이 듬직해.",
             en: "It's reliable to see you moving towards the goal.",
-            es: "Es confiable verte avanzar hacia la meta."
+            es: "Es confiable verte avanzar hacia la meta.",
+            ja: "目標に向かって進む姿が頼もしいね。"
         },
         strengths: {
             ko: ["어려운 목표를 달성했을 때", "우리 팀을 승리로 이끌었을 때"],
             en: ["When achieving a difficult goal", "When leading our team to victory"],
-            es: ["Al lograr una meta difícil", "Al llevar a nuestro equipo la victoria"]
+            es: ["Al lograr una meta difícil", "Al llevar a nuestro equipo la victoria"],
+            ja: ["難しい目標を達成した時", "チームを勝利に導いた時"]
         },
         bestMatch: {
             ko: ["지혜로운 여우 🦊", "활발한 다람쥐 🐿️"],
             en: ["Wise Fox 🦊", "Energetic Squirrel 🐿️"],
-            es: ["Zorro Sabio 🦊", "Ardilla Energética 🐿️"]
+            es: ["Zorro Sabio 🦊", "Ardilla Energética 🐿️"],
+            ja: ["賢いキツネ 🦊", "活発なリス 🐿️"]
         },
         books: {
             ko: ["해저 2만리", "보물섬"],
             en: ["20,000 Leagues Under the Sea", "Treasure Island"],
-            es: ["20,000 Leguas de Viaje Submarino", "La Isla del Tesoro"]
+            es: ["20,000 Leguas de Viaje Submarino", "La Isla del Tesoro"],
+            ja: ["海底二万里", "宝島"]
         },
         features: { energy: 5, warmth: 2, creativity: 4, thoroughness: 5, leadership: 5 }
     }

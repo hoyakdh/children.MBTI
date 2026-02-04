@@ -1,5 +1,5 @@
 import React from 'react';
-import { Helmet } from 'react-helmet-async';
+
 import { locales } from '../data/locales';
 
 const PrivacyPolicy = ({ isDarkMode, language }) => {
@@ -25,10 +25,7 @@ const PrivacyPolicy = ({ isDarkMode, language }) => {
 
     return (
         <div style={containerStyle}>
-            <Helmet>
-                <title>{t.privacy.title}</title>
-                <meta name="description" content={t.privacy.intro} />
-            </Helmet>
+
 
             <h1 style={titleStyle}>{t.privacy.title}</h1>
 

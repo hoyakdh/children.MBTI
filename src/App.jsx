@@ -151,7 +151,7 @@ function App() {
             padding: '5px',
             backdropFilter: 'blur(5px)'
           }}>
-            {['ko', 'en', 'es'].map(lang => (
+            {['ko', 'en', 'es', 'ja'].map(lang => (
               <button
                 key={lang}
                 onClick={() => setLanguage(lang)}
